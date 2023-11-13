@@ -12,7 +12,7 @@ function Login() {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Gymstagram Account Login</h2>
       <form onSubmit={handleLogin}>
         <input
           type="text"
