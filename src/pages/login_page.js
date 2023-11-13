@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-
+//import Logo from '../logo.svg';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 function LoginPage() {
@@ -24,7 +24,16 @@ function LoginPage() {
 
   return (
     <div>
-      <h2>Login</h2>
+      <img
+        src="./gymstagram_logo.jpeg" alt="Logo"
+        width="100" 
+        height="100" 
+        style={{ borderRadius: '50%' }} // Apply the circular shape
+        />
+        <br />
+        Gymstagram
+        <br />
+      <h2>Account Login</h2>
       <form onSubmit={handleLogin}>
         <input
           type="text"
@@ -47,5 +56,7 @@ function LoginPage() {
     </div>
   );
 };
+
+
 
 export default LoginPage;
