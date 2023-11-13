@@ -1,9 +1,7 @@
 //import logo from './logo.svg';
 import LoginPage from './pages/login_page'
 import HomePage from './pages/home_page'
-
 import './App.css';
-import Login from './login'; 
 
 
 function App() {
