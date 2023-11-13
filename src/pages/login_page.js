@@ -1,18 +1,31 @@
-// Login.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
-function Login() {
+function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const navigate = useNavigate(); // Initialize the navigate function
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Handle form submission and authentication here
+    // Simulated authentication logic (replace with your actual authentication logic)
+    if (username === 'emilia' && password === 'Aryan') {
+      // If authentication is successful, set loggedIn to true and navigate to the homepage
+      setLoggedIn(true);
+      navigate('/homepage');
+    }
   };
+
+  // If loggedIn is true, redirect to the homepage
+  if (loggedIn) {
+    navigate('/homepage');
+  }
 
   return (
     <div>
-      <h2>Account Login</h2>
+      <h2>Login</h2>
       <form onSubmit={handleLogin}>
         <input
           type="text"
@@ -34,4 +47,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginPage;

@@ -1,29 +1,22 @@
 //import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginPage from './pages/login_page'
 import HomePage from './pages/home_page'
 import './App.css';
 
 
 function App() {
-  console.log("we here")
   return (
-    <div className="App">
-      <header className="App-header">
-      <img
-        src="https://static.vecteezy.com/system/resources/thumbnails/001/990/166/small_2x/gym-line-icon-dumbbell-and-kettlebell-vector.jpg"
-        alt="Logo"
-        width="100" 
-        height="100" 
-        style={{ borderRadius: '50%' }} // Apply the circular shape
-        />
-        <br />
-        Gymstagram
-        <div>
-          <LoginPage/>
-        </div>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/homepage" element={<HomePage />} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
-//hi
 export default App;
