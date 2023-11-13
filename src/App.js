@@ -1,3 +1,4 @@
+import app, { analytics } from './firebase';
 //import logo from './logo.svg';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';

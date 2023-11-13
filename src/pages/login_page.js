@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -8,15 +10,20 @@ function LoginPage() {
 
   const navigate = useNavigate(); // Initialize the navigate function
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    // Simulated authentication logic (replace with your actual authentication logic)
-    if (username === 'emilia' && password === 'Aryan') {
-      // If authentication is successful, set loggedIn to true and navigate to the homepage
-      setLoggedIn(true);
-      navigate('/homepage');
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    const auth = getAuth()
+    try{
+        await signInWithEmailAndPassword(auth, username, password);
+        console.log("validated!")
+        navigate('/homepage');
     }
-  };
+    catch (error){
+        console.error("Couldn't sign in")
+    }
+      
+    }
+    
 
   // If loggedIn is true, redirect to the homepage
   if (loggedIn) {
@@ -45,6 +52,6 @@ function LoginPage() {
       </form>
     </div>
   );
-}
+};
 
 export default LoginPage;
