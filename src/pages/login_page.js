@@ -6,7 +6,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const navigate = useNavigate(); // Initialize the navigate function
 
@@ -15,20 +15,12 @@ function LoginPage() {
     const auth = getAuth()
     try{
         await signInWithEmailAndPassword(auth, username, password);
-        console.log("validated!")
         navigate('/homepage');
     }
     catch (error){
-        console.error("Couldn't sign in")
+        setErrorMessage("Login not recognized. Please try again.")
     }
-      
-    }
-    
-
-  // If loggedIn is true, redirect to the homepage
-  if (loggedIn) {
-    navigate('/homepage');
-  }
+}
 
   return (
     <div>
@@ -49,7 +41,9 @@ function LoginPage() {
         />
         <br />
         <button type="submit">Login</button>
+      
       </form>
+      {errorMessage && <div className="error"> {errorMessage} </div>}
     </div>
   );
 };
