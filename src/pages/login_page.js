@@ -24,23 +24,27 @@ function LoginPage() {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h1 class="fancy-header">Gymstagram</h1>
       <form onSubmit={handleLogin}>
         <input
           type="text"
-          placeholder="Username"
+          class="fancy-input"
+          placeholder="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <br />
         <input
           type="password"
-          placeholder="Password"
+          class="fancy-input"
+          placeholder="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
-        <button type="submit">Login</button>
+        <div class="spacer"></div>
+        <button class="fancy-button" type="submit">Log in</button>
+
       
       </form>
       {errorMessage && <div className="error"> {errorMessage} </div>}

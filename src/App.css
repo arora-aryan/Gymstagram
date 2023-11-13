@@ -36,3 +36,102 @@
   margin-bottom: 20px;
   margin-top: 20px;
 }
+
+/* fancy :'D */
+.fancy-header {
+  font-family: 'Arial', sans-serif;
+  color: #4a90e2; 
+  text-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+  font-size: 50px;
+  letter-spacing: 2px;
+}
+
+.fancy-input {
+  padding: 10px;
+  border: 2px solid #4a90e2; 
+  border-radius: 5px;
+  font-size: 16px;
+
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.fancy-input:hover {
+  border-color: 13px #1a67ab;
+  border-radius: 15px;
+}
+
+.fancy-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4a91e291; 
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; 
+}
+
+.fancy-button:hover {
+  background-color: #2e6da4; 
+}
+
+
+.spacer {/* Adjust height as needed */
+  height: 10px; 
+  width: 100%; /* take the full width available */
+}
+
+
+
+/*POSTS*/
+.post {
+  border: 9px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
+  background-color: #f9f9f9;
+}
+
+.post-header {
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.post-header img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.post-header-text h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.post-content {
+  margin-bottom: 5px;
+}
+
+.post-image {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.post-buttons button {
+  padding: 5px 10px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+}
+
+.post-buttons button:hover {
+  background-color: #232323;
+  transition: all 0.7s ease; 
+}
