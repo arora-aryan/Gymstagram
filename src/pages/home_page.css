@@ -1,0 +1,39 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  .App-header {
+    background-color: rgb(32, 38, 62);
+    min-height: 100vh;
+    /*display: flex;*/
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(20px + 2vmin);
+    color: white;
+  }
+  
+  #square {
+    width: 100px;
+    height: 200px;
+    background-color: darkgrey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+    height: 200px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
