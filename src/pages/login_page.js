@@ -1,13 +1,24 @@
 // Login.js
 import React, { useState } from 'react';
 
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault()
+    const auth = getAuth()
+    try{
+        await signInWithEmailAndPassword(auth, username, password);
+        console.log("validated!")
+    }
+    catch (error){
+        console.error("Couldn't sign in")
+    }
     // Handle form submission and authentication here
+    
   };
 
   return (

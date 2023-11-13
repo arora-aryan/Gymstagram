@@ -1,3 +1,4 @@
+import app, { analytics } from './firebase';
 //import logo from './logo.svg';
 import LoginPage from './pages/login_page'
 import HomePage from './pages/home_page'
@@ -5,7 +6,6 @@ import './App.css';
 
 
 function App() {
-  console.log("we here")
   return (
     <div className="App">
       <header className="App-header">
