@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import Logo from '../logo.svg';
+//import Logo from '../logo.svg';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 function LoginPage() {
@@ -25,9 +25,7 @@ function LoginPage() {
   return (
     <div>
       <img
-        //src='logo.sgv'
-        //alt="Logo"
-        id="myImageElement" src={Logo} alt="Logo"
+        src="./gymstagram_logo.jpeg" alt="Logo"
         width="100" 
         height="100" 
         style={{ borderRadius: '50%' }} // Apply the circular shape
