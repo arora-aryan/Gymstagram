@@ -9,14 +9,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        Gymstagram
-        <img
+      <img
         src="https://static.vecteezy.com/system/resources/thumbnails/001/990/166/small_2x/gym-line-icon-dumbbell-and-kettlebell-vector.jpg"
         alt="Logo"
-        width="100" // Set the width as needed
-        height="100" // Set the height as needed
+        width="100" 
+        height="100" 
         style={{ borderRadius: '50%' }} // Apply the circular shape
         />
+        <br />
+        Gymstagram
         <div>
           <LoginPage/>
         </div>

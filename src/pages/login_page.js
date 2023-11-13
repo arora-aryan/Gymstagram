@@ -12,7 +12,7 @@ function Login() {
 
   return (
     <div>
-      <h2>Gymstagram Account Login</h2>
+      <h2>Account Login</h2>
       <form onSubmit={handleLogin}>
         <input
           type="text"
@@ -20,12 +20,14 @@ function Login() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        <br />
         <input
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <br />
         <button type="submit">Login</button>
       </form>
     </div>
