@@ -9,7 +9,8 @@
   }
   
   .top-right-button {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+    position: fixed;
+    font-size: large;
+    top: 15px;
+    left: 15px;
   }

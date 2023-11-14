@@ -1,6 +1,6 @@
 import './home_page.css'
 import '../App.css'
-import './post_component.js'
+import './create_post.js'
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 function HomePage(){
@@ -12,7 +12,7 @@ function HomePage(){
   const todayString = today.toLocaleDateString('en-US', options);
   return(
     <>
-    <button className="top-right-button" onClick={() => {navigate('/create');}}> Create a post! </button>
+    <button className="top-right-button" onClick={() => {navigate('/create');}}> &#10133; </button>
     <div class="post">
         <div class="post-header">
             <img src="https://c4.wallpaperflare.com/wallpaper/734/359/761/men-police-ronnie-coleman-wallpaper-preview.jpg" alt="Profile Picture"/>
