@@ -58,7 +58,7 @@ const handleCreateAccount = () => {
         <br />
         <button type="submit" className="submit-button" onClick={handleCreateAccount}>Create Account</button>
       </form>
-      {errorMessage && <div className="error"> {errorMessage} </div>}
+      {errorMessage && <div style={{color: "#ff0000"}} className="error"> {errorMessage} </div>}
     </div>
   );
 };
