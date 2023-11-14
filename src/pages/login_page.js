@@ -22,6 +22,10 @@ function LoginPage() {
     }
 }
 
+const handleCreateAccount = () => {
+  navigate('/create-account'); // Redirect to the create_account page
+};
+
   return (
     <div>
       <img
@@ -50,8 +54,11 @@ function LoginPage() {
         <br />
         <div style={{ height: '10px' }}></div>
         <button type="submit" class="fancy-button">Log in</button>
+        <br />
+        <br />
+        <button type="submit" className="submit-button" onClick={handleCreateAccount}>Create Account</button>
       </form>
-      {errorMessage && <div className="error"> {errorMessage} </div>}
+      {errorMessage && <div style={{color: "#ff0000"}} className="error"> {errorMessage} </div>}
     </div>
   );
 };

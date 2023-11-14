@@ -4,6 +4,9 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginPage from './pages/login_page'
 import HomePage from './pages/home_page'
+import CreatePost from './pages/create_post'
+import CreateAccountPage from './pages/create_account';
+
 import ProfilePage from './pages/profile_page'
 import EditProfilePage from './pages/edit_profile_page';
 import './App.css';
@@ -26,6 +29,8 @@ function App() {
           <Route path="/home-page" element={<HomePage />} />
           <Route path="/" element={<EditProfilePage />} />
           <Route path="/profile-page" element={<ProfilePage />} />
+          <Route path="/create" element={<CreatePost />} />
+          <Route path="/create-account" element={<CreateAccountPage />} />
         </Routes>
       </div>
     </Router>
