@@ -29,6 +29,7 @@ function HomePage(){
             <button>Like</button>
             <button>Comment</button>
             <button>Share</button>
+            <button> &#9888; Report Misinformation</button>
         </div>
     </div>
     </>
