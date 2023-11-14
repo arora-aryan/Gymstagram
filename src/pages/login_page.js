@@ -30,7 +30,7 @@ function LoginPage() {
         height="100" 
         style={{ borderRadius: '50%' }} // Apply the circular shape
         />
-        <h1 class="fancy-header">Gymstagram</h1> 
+        <h1 class="fancy-header">Gymstagram</h1>
       <form onSubmit={handleLogin}>
         <input
           class="fancy-input"
