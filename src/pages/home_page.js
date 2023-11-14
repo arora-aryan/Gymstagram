@@ -2,12 +2,12 @@ import './home_page.css'
 import '../App.css'
 import './create_post.js'
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link } from 'react-router-dom';
 
 function HomePage(){
   const navigate = useNavigate();
-
-  console.log("hi")
-  const today = new Date();
+    console.log("hi")
+    const today = new Date();
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const todayString = today.toLocaleDateString('en-US', options);
   return(
@@ -31,10 +31,15 @@ function HomePage(){
             <button>Share</button>
             <button> &#9888; Report Misinformation</button>
         </div>
+        <br />
+        <button onClick={() => navigate("/profile-page")} className="fancy-button">
+          View Profile
+        </button>
     </div>
     </>
   )
 }
+
 
 
 export default HomePage;
