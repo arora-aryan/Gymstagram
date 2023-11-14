@@ -22,6 +22,10 @@ function LoginPage() {
     }
 }
 
+const handleCreateAccount = () => {
+  navigate('/create-account'); // Redirect to the create_account page
+};
+
   return (
     <div>
       <img
@@ -30,7 +34,7 @@ function LoginPage() {
         height="100" 
         style={{ borderRadius: '50%' }} // Apply the circular shape
         />
-        <h1 class="fancy-header">Gymstagram</h1> 
+        <h1 class="fancy-header">Gymstagram</h1>
       <form onSubmit={handleLogin}>
         <input
           class="fancy-input"
@@ -50,6 +54,9 @@ function LoginPage() {
         <br />
         <div style={{ height: '10px' }}></div>
         <button type="submit" class="fancy-button">Log in</button>
+        <br />
+        <br />
+        <button type="submit" className="submit-button" onClick={handleCreateAccount}>Create Account</button>
       </form>
       {errorMessage && <div style={{color: "#ff0000"}} className="error"> {errorMessage} </div>}
     </div>
