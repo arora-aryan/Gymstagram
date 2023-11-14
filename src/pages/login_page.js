@@ -51,7 +51,7 @@ function LoginPage() {
         <div style={{ height: '10px' }}></div>
         <button type="submit" class="fancy-button">Log in</button>
       </form>
-      {errorMessage && <div className="error"> {errorMessage} </div>}
+      {errorMessage && <div style={{color: "#ff0000"}} className="error"> {errorMessage} </div>}
     </div>
   );
 };
