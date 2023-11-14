@@ -30,12 +30,10 @@ function LoginPage() {
         height="100" 
         style={{ borderRadius: '50%' }} // Apply the circular shape
         />
-        <br />
-        Gymstagram
-        <br />
-      <h2>Account Login</h2>
+        <h1 class="fancy-header">Gymstagram</h1> 
       <form onSubmit={handleLogin}>
         <input
+          class="fancy-input"
           type="text"
           placeholder="Username"
           value={username}
@@ -43,14 +41,15 @@ function LoginPage() {
         />
         <br />
         <input
+          class="fancy-input"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
-        <button type="submit">Login</button>
-      
+        <div style={{ height: '10px' }}></div>
+        <button type="submit" class="fancy-button">Log in</button>
       </form>
       {errorMessage && <div className="error"> {errorMessage} </div>}
     </div>
