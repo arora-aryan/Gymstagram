@@ -9,6 +9,7 @@ import CreateAccountPage from './pages/create_account';
 import ProfilePage from './pages/profile_page'
 import EditProfilePage from './pages/edit_profile_page';
 
+//comment to understand how git rebase works
 
 import './App.css';
 

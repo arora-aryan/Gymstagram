@@ -4,6 +4,8 @@ import './create_post.js'
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { Link } from 'react-router-dom';
 
+//how does git rebase work
+
 function HomePage(){
   const navigate = useNavigate();
     console.log("hi")
