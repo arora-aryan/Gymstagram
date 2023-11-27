@@ -1,26 +1,47 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Logo from '../logo.jpeg';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase';
+
 
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
   const navigate = useNavigate(); // Initialize the navigate function
 
-  const handleLogin = async (e) => {
-    e.preventDefault()
-    const auth = getAuth()
-    try{
-        await signInWithEmailAndPassword(auth, username, password);
+//   const handleLogin = async (e) => {
+//     e.preventDefault()
+//     const auth = getAuth()
+//     try{
+//         await signInWithEmailAndPassword(auth, username, password);
+//         navigate('/homepage');
+//     }
+//     catch (error){
+//         setErrorMessage("Login not recognized. Please try again.")
+//     }
+// }
+const handleLogin = async (e) => {
+  e.preventDefault();
+  const auth = getAuth();
+
+  try {
+    await signInWithEmailAndPassword(auth, username, password);
+
+    // Wait for the authentication to complete before navigating
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, navigate to the homepage
         navigate('/homepage');
-    }
-    catch (error){
-        setErrorMessage("Login not recognized. Please try again.")
-    }
-}
+        unsubscribe(); // Remove the observer after navigating
+      }
+    });
+  } catch (error) {
+    setErrorMessage("Login not recognized. Please try again.");
+  }
+};
+
 
 const handleCreateAccount = () => {
   navigate('/create-account'); // Redirect to the create_account page
