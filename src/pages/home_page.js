@@ -62,14 +62,16 @@ function HomePage() {
   const handleProfileClick = () => {
     navigate('/profile-page');
   };
-
   return (
     <div>
-      <button className="top-right-button" onClick={() => {navigate('/create')}}> &#10133; </button>
-      <button className="profile-button" onClick={handleProfileClick}>
-        Profile
+      <button className="fancy-button" onClick={handleProfileClick}>
+        View Profile
       </button>
-      
+      <h1>postGrid</h1>
+      <div>
+
+      <button className="fancy-post-button" onClick={() => {navigate('/create')}}> &#10133; </button>
+      </div>
       <h1>Users</h1>
       <div style={{ textAlign: 'left' }}>
         <ul style={{ listStyleType: 'none' }}>
@@ -79,8 +81,8 @@ function HomePage() {
         </ul>
       </div>
 
-
     </div>
+
   );
 }
 
