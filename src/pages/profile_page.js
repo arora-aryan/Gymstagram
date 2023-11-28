@@ -1,41 +1,39 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { firestore, auth } from '../firebase'; // import firestore
+import { firestore } from '../firebase'; // Ensure this import is correct
 import { doc, getDoc } from "firebase/firestore";
-//import { getUserID } from '../globals';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 function ProfileList() {
   const [currentUser, setCurrentUser] = useState(null);
 
-  const uid = null;
-  
-  const auth = getAuth();
-    const user = auth.currentUser;
-    if (user) {
-        const uid = user.uid;
-        console.log(uid);
-    } else {
-        //navigate('/login');
-        console.log("no user")
-    }
-
   useEffect(() => {
-    const fetchProfile = async () => {
-      const docRef = doc(firestore, "profiles", uid);
-      const docSnap = await getDoc(docRef);
+    const auth = getAuth();
 
-      if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
-        setCurrentUser(docSnap.data()); // Update state with the fetched data
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        fetchProfile(uid);
       } else {
-        console.log("No such document!");
+        console.log("No user is currently signed in.");
+        // Optionally, navigate to the login page here
       }
-    };
+    });
 
-    fetchProfile();
-  }, []); // Empty dependency array means this runs once when the component mounts
+    return () => unsubscribe(); // Clean up the subscription
+  }, []);
+
+  const fetchProfile = async (uid) => {
+    const docRef = doc(firestore, "profiles", uid);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      setCurrentUser(docSnap.data());
+    } else {
+      console.log("No such document!");
+    }
+  };
 
   return (
     <div>
