@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './create_account.css';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+//import { firestore } from '../firebase';
+import { firestore, auth } from '../firebase';
+import { doc, setDoc } from 'firebase/firestore';
 
 function CreateAccountPage() {
   const [formData, setFormData] = useState({
@@ -20,7 +23,16 @@ function CreateAccountPage() {
 
     try {
       // Create a new user with email and password
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+      // Get the user's UID from the userCredential
+      const { uid } = userCredential.user;
+      console.log(uid);
+
+      // Add user data to the "profiles" collection in Firestore
+      await setDoc(doc(firestore, "profiles", uid), {
+        User_Name: username
+      });
 
       // User registration successful, you can add additional logic here if needed
     } catch (error) {
