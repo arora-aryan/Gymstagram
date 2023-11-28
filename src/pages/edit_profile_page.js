@@ -16,6 +16,10 @@ function EditProfilePage() {
   const handleBioChange = (e) => {
     setBio(e.target.value);
   };
+  
+  const handleProfileClick = () => {
+    navigate('/profile-page');
+  };
 
   const handleSaveProfile = async () => {
     try {
@@ -73,6 +77,10 @@ function EditProfilePage() {
       <br />
       <button type="button" className="fancy-button" onClick={handleSaveProfile}>
         Save Profile
+      </button>
+      <br></br>
+      <button onClick={() => navigate("/profile-page")} className="fancy-button">
+          View Profile
       </button>
     </div>
   );

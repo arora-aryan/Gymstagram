@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './create_post.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import '../App.css';
 import { firestore, auth } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
@@ -32,6 +33,11 @@ function CreatePost() {
     setPostTitle('');
   };
 
+  const navigate = useNavigate();
+  const handleProfileClick = () => {
+    navigate('/profile-page');
+  };
+
   return (
     <>
       <form className="create-post" onSubmit={handleSubmit}>
@@ -47,12 +53,14 @@ function CreatePost() {
             placeholder="Write a caption..."
           />
           <br />
-
           <label className="component" htmlFor="file-upload"></label>
           <input className="component" id="file-upload" type="file" />
         </div>
         <button type="submit">Post</button>
       </form>
+      <button className="profile-button" onClick={handleProfileClick}>
+        Profile
+      </button>
     </>
   );
 }
