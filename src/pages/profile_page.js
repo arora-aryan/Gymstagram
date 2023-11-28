@@ -1,44 +1,52 @@
+// ProfileList.js
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { firestore, auth } from '../firebase';
+import { firestore, auth } from '../firebase';  // Make sure you're importing firestore from '../firebase'
 
 function ProfileList() {
+  //const [profiles, setProfiles] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in, get the UID
-        const uid = user.uid;
+    const fetchProfiles = async () => {
+      try {
+        // Check if there is a user currently authenticated
+        const user = auth.currentUser;
 
-        // Retrieve the user profile from Firestore using the UID
-        const userProfileRef = firestore.collection('profiles').doc(uid);
-        userProfileRef.get().then((userProfileSnapshot) => {
+        if (user) {
+          // The user is signed in, get the UID
+          const uid = user.uid;
+
+          // Retrieve the user profile from Firestore using the UID
+          const userProfileRef = firestore.collection('profiles').doc(uid);
+          const userProfileSnapshot = await userProfileRef.get();
+
           if (userProfileSnapshot.exists) {
             const userProfileData = {
               id: userProfileSnapshot.id,
               ...userProfileSnapshot.data(),
             };
+
             setCurrentUser(userProfileData);
           } else {
             console.log('No profile found for the current user.');
           }
-        }).catch((error) => {
-          console.error('Error fetching profiles:', error.message);
-        });
-      } else {
-        // No user is signed in
-        console.log('No user is currently signed in.');
+        } else {
+          // No user is signed in
+          console.log('No user is currently signed in.');
+        }
+      } catch (error) {
+        console.error('Error fetching profiles:', error.message);
       }
-    });
+    };
 
-    return () => unsubscribe(); // Cleanup the observer on component unmount
+    fetchProfiles();
   }, []); // Run once on component mount
 
   return (
     <div>
       <h2>Profile</h2>
-       {currentUser && (
+      {currentUser && (
         <div>
           <img src={currentUser.photoURL} alt="Profile" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
           <p>{currentUser.bio}</p>
@@ -56,76 +64,6 @@ function ProfileList() {
 }
 
 export default ProfileList;
-
-
-
-
-// // ProfileList.js
-// import React, { useEffect, useState } from 'react';
-// import { Link } from 'react-router-dom';
-// import { firestore, auth } from '../firebase';  // Make sure you're importing firestore from '../firebase'
-
-// function ProfileList() {
-//   //const [profiles, setProfiles] = useState([]);
-//   const [currentUser, setCurrentUser] = useState(null);
-
-//   useEffect(() => {
-//     const fetchProfiles = async () => {
-//       try {
-//         // Check if there is a user currently authenticated
-//         const user = auth.currentUser;
-
-//         if (user) {
-//           // The user is signed in, get the UID
-//           const uid = user.uid;
-
-//           // Retrieve the user profile from Firestore using the UID
-//           const userProfileRef = firestore.collection('profiles').doc(uid);
-//           const userProfileSnapshot = await userProfileRef.get();
-
-//           if (userProfileSnapshot.exists) {
-//             const userProfileData = {
-//               id: userProfileSnapshot.id,
-//               ...userProfileSnapshot.data(),
-//             };
-
-//             setCurrentUser(userProfileData);
-//           } else {
-//             console.log('No profile found for the current user.');
-//           }
-//         } else {
-//           // No user is signed in
-//           console.log('No user is currently signed in.');
-//         }
-//       } catch (error) {
-//         console.error('Error fetching profiles:', error.message);
-//       }
-//     };
-
-//     fetchProfiles();
-//   }, []); // Run once on component mount
-
-//   return (
-//     <div>
-//       <h2>Profile</h2>
-//       {currentUser && (
-//         <div>
-//           <img src={currentUser.photoURL} alt="Profile" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
-//           <p>{currentUser.bio}</p>
-//         </div>
-//       )}
-//       <Link to="/edit-profile">
-//         <button>Edit Profile</button>
-//       </Link>
-//       <br />
-//       <Link to="/homepage">
-//         <button>Home Page</button>
-//       </Link>
-//     </div>
-//   );
-// }
-
-// export default ProfileList;
 
 
 
