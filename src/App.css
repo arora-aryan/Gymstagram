@@ -184,3 +184,52 @@ body .fancy-header {
   margin-right: 20px; /* Adjust the horizontal space */
 }
 
+.form-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/* Assuming you have a CSS file, for example, styles.css */
+
+.bio-style {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 100px; /* Set a minimum height */
+  font-size: 16px; /* Adjust the font size */
+  color: #007BFF; /* Set the text color to blue */
+  font-weight: bold; /* Set the font weight to bold */
+}
+
+/* Optional: Add hover and focus styles for a better user experience */
+.bio-style:hover,
+.bio-style:focus {
+  border-color: #007BFF; /* Change border color on hover/focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow on hover/focus */
+}
+
+.small-font {
+  font-size: 10px;
+}
+
+.small-font {
+  font-size: 10px;
+}
+
+.small-font {
+  font-size: 10px;
+}
+
+.small-font {
+  font-size: 10px;
+}
+/*
+fonts and formatting
+ small font
+   medium font
+   big font
+   huge font
+*/

@@ -59,7 +59,7 @@ function CreatePost() {
 
   return (
     <>
-      <form className="create-post" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className="component">Create a post</div>
         <div className="component">
           <input
@@ -72,7 +72,7 @@ function CreatePost() {
             placeholder="Write a caption..."
           />
           <br />
-          <label className="component" htmlFor="file-upload"></label>
+          <label className="component" htmlFor="file-upload">Upload</label>
           <input
             className="component"
             id="file-upload"
@@ -82,7 +82,7 @@ function CreatePost() {
         </div>
         <button type="btn-submit">Post</button>
       </form>
-      <button className="profile-button" onClick={handleProfileClick}>
+      <button onClick={handleProfileClick}>
         Profile
       </button>
     </>

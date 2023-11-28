@@ -76,7 +76,7 @@ function HomePage() {
       <div style={{ textAlign: 'left' }}>
         <ul style={{ listStyleType: 'none' }}>
           {users.map((user) => (
-          <li key={user.id}>{user.profile_picture} - {user.User_Name} - {user.id} - {user.bio}</li>
+          <li key={user.id}>{user.profile_picture} | {user.User_Name} | {user.id} | {user.bio}</li>
          ))}
         </ul>
       </div>

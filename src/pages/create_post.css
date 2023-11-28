@@ -1,49 +1,27 @@
-/* create-post-light-blue.css */
-
-.create-post {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 110px;
-  border: 1px solid #0b4364; /* Light blue border color */
-  border-radius: 8px;
-  background-color: #edf5fc; /* Light blue background color */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.bio-style {
+  width: 300px;
+  height: 75px;
 }
 
-.form-group {
-  margin-bottom: 20px;
+
+.custom-file-input {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
 }
 
-.form-group label {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 8px;
+.file-input {
+  position: absolute;
+  font-size: 100px;
+  opacity: 0;
+  right: 0;
+  top: 0;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #175172; /* Light blue border color */
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-.form-group textarea {
-  resize: vertical;
-}
-
-.btn-submit {
-  background-color: #4a90e2; /* Dark blue button color */
-  color: #0069d9;
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
+#fileInputLabel {
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
-}
-
-.btn-submit:hover {
-  background-color: #3669b3; /* Darker blue on hover */
 }

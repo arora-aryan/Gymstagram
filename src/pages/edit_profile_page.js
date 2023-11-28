@@ -10,10 +10,15 @@ function EditProfilePage() {
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [bio, setBio] = useState('');
   const navigate = useNavigate(); // useNavigate hook for navigation
+  const fileInputRef = React.createRef();
 
   const handleProfilePhotoChange = (e) => {
     const file = e.target.files[0];
     setProfilePhoto(file);
+    const label = document.getElementById('fileInputLabel');
+    if (label) {
+      label.innerText = file ? file.name : 'Upload Profile Photo';
+    }
   };
   
   const handleBioChange = async (e) => {
@@ -34,9 +39,12 @@ function EditProfilePage() {
       
   };
   
-  const handleProfileClick = () => {
+ 
+  const handleProfileClick = async () => {
+    await handleSaveProfile(); // Ensure that handleSaveProfile is invoked properly
     navigate('/profile-page');
   };
+  
 
   const handleSaveProfile = async () => {
     try {
@@ -68,6 +76,10 @@ function EditProfilePage() {
       console.error('Error saving profile:', error.message);
     }
   };
+  const handleFileButtonClick = () => {
+    // Trigger a click on the hidden file input
+    fileInputRef.current.click();
+  };
 
   return (
     <div>
@@ -80,26 +92,44 @@ function EditProfilePage() {
         style={{ borderRadius: '50%' }}
       />
       <h1 className="fancy-header">Edit your profile</h1>
-      <form className="form-group">
+      <form className="form-center">
         <label>
-          Profile Photo:
-          <input type="file" onChange={handleProfilePhotoChange} />
+          Profile Photo: 
+          <div className="custom-file-input">
+          <span id="fileInputLabel">...</span>
+            <input
+              type="file"
+              onChange={handleProfilePhotoChange}
+              className="file-input"
+              ref={fileInputRef}
+            />
+          </div>
         </label>
         <br />
-        <label>
-          Bio:
-          <textarea value={bio} onChange={handleBioChange} />
-        </label>
-      </form>
-      <br />
-      <button type="button" className="fancy-button" onClick={handleSaveProfile}>
-        Save Profile
-      </button>
-      <br></br>
-      <br></br>
-      <button onClick={() => navigate("/profile-page")} className="fancy-button">
+        {/*separate button for a better ui experience :D wow*/}
+        
+        <button type="button" onClick={handleFileButtonClick} className="fancy-button">
+          Choose File
+        </button>
+        <br />
+        <button onClick={handleProfileClick} className="fancy-button">
           View Profile
-      </button>
+        </button>
+        <br />
+        
+        <label className='small-font'>
+          Bio:
+          <textarea
+            value={bio}
+            onChange={handleBioChange}
+            className="bio-style"
+          />
+        </label>
+        <br />
+        <button type="button" className="fancy-button" onClick={handleSaveProfile}>
+          Save Profile
+        </button>
+      </form>
     </div>
   );
 }
