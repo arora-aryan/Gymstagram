@@ -13,6 +13,7 @@ function HomePage() {
 
   return (
     <div>
+      <button className="top-right-button" onClick={() => {navigate('/create')}}> &#10133; </button>
       <button className="profile-button" onClick={handleProfileClick}>
         Profile
       </button>

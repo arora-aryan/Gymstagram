@@ -64,7 +64,7 @@ const navigate = useNavigate();
       </Link>
 
 
-    <button className="top-right-button" onClick={() => {navigate('/create');}}> &#10133; </button>
+    <button className="top-right-button" onClick={() => {navigate('/create')}}> &#10133; </button>
     <div class="post">
         <div class="post-header">
             <img src="https://c4.wallpaperflare.com/wallpaper/734/359/761/men-police-ronnie-coleman-wallpaper-preview.jpg" alt="Profile Picture"/>
