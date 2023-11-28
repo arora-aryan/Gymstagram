@@ -78,7 +78,7 @@ function CreatePost() {
             onChange={handleFileChange}
           />
         </div>
-        <button type="submit">Post</button>
+        <button type="btn-submit">Post</button>
       </form>
       <button className="profile-button" onClick={handleProfileClick}>
         Profile

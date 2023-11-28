@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './create_account.css';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-//import { firestore } from '../firebase';
-import { firestore, auth } from '../firebase';
+import { firestore } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 
 function CreateAccountPage() {
