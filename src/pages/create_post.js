@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { firestore, storage } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import './create_post.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 //throw error when image too large
 
@@ -22,6 +22,10 @@ function CreatePost() {
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]); // Capture the file
+  };
+
+  const handleProfileClick = () => {
+    navigate('/profile-page');
   };
 
   const handleSubmit = async (e) => {
@@ -51,9 +55,7 @@ function CreatePost() {
     }
   };
 
-  const handleProfileClick = () => {
-    navigate('/profile-page');
-  };
+
 
   return (
     <>

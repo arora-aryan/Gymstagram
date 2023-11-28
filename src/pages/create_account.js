@@ -3,6 +3,7 @@ import './create_account.css';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { firestore } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
+import { useNavigate } from 'react-router-dom';
 
 function CreateAccountPage() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ function CreateAccountPage() {
     email: '',
     password: '',
   });
+
+  const navigate = useNavigate();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -33,12 +36,17 @@ function CreateAccountPage() {
         User_Name: username
       });
 
+      //navigate if sucessful
+      navigate('/login')
+
       // User registration successful, you can add additional logic here if needed
     } catch (error) {
       // Handle registration error, you can display an error message to the user
       console.error('Registration error:', error.message);
     }
   };
+
+
 
   return (
     <div className="App-header">
