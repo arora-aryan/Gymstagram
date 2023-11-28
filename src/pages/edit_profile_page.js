@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { storage, firestore } from '../firebase';
 import Logo from '../logo.jpeg';
+import { doc, updateDoc } from 'firebase/firestore';
+import { getAuth } from "firebase/auth";
 
 function EditProfilePage() {
   const [profilePhoto, setProfilePhoto] = useState(null);
@@ -12,9 +14,23 @@ function EditProfilePage() {
     const file = e.target.files[0];
     setProfilePhoto(file);
   };
-
-  const handleBioChange = (e) => {
-    setBio(e.target.value);
+  
+  const handleBioChange = async (e) => {
+    const updatedBio = e.target.value;
+    setBio(updatedBio);
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const docRef = doc(firestore, 'profiles', user.uid);
+      try {
+        await updateDoc(docRef, {
+          Bio: updatedBio,
+          // Add more fields and values as needed
+        });
+        console.log('Document successfully updated');
+      } catch (error) {
+        console.error('Error updating document: ', error);
+      }
+      
   };
   
   const handleProfileClick = () => {
