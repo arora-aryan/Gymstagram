@@ -48,7 +48,7 @@ const navigate = useNavigate();
 
   return (
     <div>
-      <h2>Profile</h2>
+      <h5 class="fancy-header">Profile</h5>
       {currentUser && (
         <div>
           <img src={currentUser.photoURL} alt="Profile" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
@@ -56,15 +56,15 @@ const navigate = useNavigate();
         </div>
       )}
       <Link to="/edit-profile">
-        <button>Edit Profile</button>
+        <button class="fancy-button">Edit Profile</button>
       </Link>
-      <br />
       <Link to="/homepage">
-        <button>Home Page</button>
+        <button class="fancy-button">Home Page</button>
       </Link>
 
 
-    <button className="top-right-button" onClick={() => {navigate('/create');}}> &#10133; </button>
+      <button className="fancy-post-button" onClick={() => {navigate('/create')}}> &#10133; </button>
+
     <div class="post">
         <div class="post-header">
             <img src="https://c4.wallpaperflare.com/wallpaper/734/359/761/men-police-ronnie-coleman-wallpaper-preview.jpg" alt="Profile Picture"/>
@@ -81,12 +81,10 @@ const navigate = useNavigate();
             <button>Like</button>
             <button>Comment</button>
             <button>Share</button>
+            <br></br>
+            <br></br>
             <button> &#9888; Report Misinformation</button>
         </div>
-        <br />
-        <button onClick={() => navigate("/homepage")} className="fancy-button">
-          View Home
-        </button>
     </div>
     </div>
 

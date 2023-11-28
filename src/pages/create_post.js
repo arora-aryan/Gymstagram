@@ -56,7 +56,7 @@ function CreatePost() {
           <label className="component" htmlFor="file-upload"></label>
           <input className="component" id="file-upload" type="file" />
         </div>
-        <button type="submit">Post</button>
+        <button type="btn-submit">Post</button>
       </form>
       <button className="profile-button" onClick={handleProfileClick}>
         Profile

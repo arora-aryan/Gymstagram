@@ -10,14 +10,18 @@ function HomePage() {
   const handleProfileClick = () => {
     navigate('/profile-page');
   };
-
   return (
     <div>
-      <button className="profile-button" onClick={handleProfileClick}>
-        Profile
+      <button className="fancy-button" onClick={handleProfileClick}>
+        View Profile
       </button>
-      <h1>other people's things here</h1>
+      <h1>postGrid</h1>
+      <div>
+
+      <button className="fancy-post-button" onClick={() => {navigate('/create')}}> &#10133; </button>
+      </div>
     </div>
+
   );
 }
 

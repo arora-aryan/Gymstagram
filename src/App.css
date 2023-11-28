@@ -38,13 +38,27 @@
 }
 
 /* fancy :'D */
+
+/* Add a fallback font in case 'Arial' is not available */
 .fancy-header {
   font-family: 'Arial', sans-serif;
-  color: #4a90e2; 
-  text-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
+  color: #4a90e2;
   font-size: 50px;
-  letter-spacing: 2px;
 }
+
+/* Specify the font-size in pixels or other units */
+.fancy-header {
+  font-family: 'Arial', sans-serif;
+  color: #4a90e2;
+  font-size: 70px;
+}
+
+body .fancy-header {
+  font-family: 'Arial', sans-serif;
+  color: #4a90e2;
+  font-size: 70px;
+}
+
 
 .fancy-input {
   padding: 10px;
@@ -64,7 +78,7 @@
 .fancy-button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #4a91e291; 
+  background-color: #4a90e2; 
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -73,8 +87,24 @@
   transition: all 0.3s ease; 
 }
 
+.fancy-post-button {
+  padding: 20px 50px;
+  font-size: 16px; /* corrected the typo in font-size property */
+  background-color: #4ae2ad91; 
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; 
+  position: fixed; /* Changed position to fixed */
+  top: 3px; /* Positioned at the top */
+  left: 3px; /* Positioned at the left */
+}
+
+
 .fancy-button:hover {
-  background-color: #2e6da4; 
+  background-color: #4aa8e2; 
 }
 
 
@@ -131,8 +161,26 @@
   cursor: pointer;
 }
 
-.post-buttons button:hover {
-  background-color: #232323;
+.post-buttons button#hover {
+  background-color: #4aa8e2;
+  transform: scaleX(1.05);
   transition: all 0.7s ease; 
+}
+
+
+/* Add vertical spacing */
+.vertical-spacer {
+  margin-bottom: 20px; /* Adjust the value to control the vertical space */
+}
+
+/* Add horizontal spacing */
+.horizontal-spacer {
+  margin-right: 20px; /* Adjust the value to control the horizontal space */
+}
+
+/* Add both vertical and horizontal spacing */
+.custom-spacer {
+  margin-bottom: 20px; /* Adjust the vertical space */
+  margin-right: 20px; /* Adjust the horizontal space */
 }
 
