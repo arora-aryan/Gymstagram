@@ -1,14 +1,49 @@
+/* create-post-light-blue.css */
 
-  .create-post {
-    padding: 10px;
-    width: 1000px;                    /* Width of the box */
-    height: 400px;                   /* Height of the box */
-    margin: 20px;                    /* Margin for spacing */
-    border-radius: 10px;             /* Optional: if you want rounded corners */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    display: inline-block;
-  }
+.create-post {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 110px;
+  border: 1px solid #0b4364; /* Light blue border color */
+  border-radius: 8px;
+  background-color: #edf5fc; /* Light blue background color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  .component {
-    margin-top: 10px;
-  }
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #175172; /* Light blue border color */
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.btn-submit {
+  background-color: #4a90e2; /* Dark blue button color */
+  color: #0069d9;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-submit:hover {
+  background-color: #3669b3; /* Darker blue on hover */
+}

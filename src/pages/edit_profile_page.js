@@ -4,6 +4,7 @@ import { storage, firestore } from '../firebase';
 import Logo from '../logo.jpeg';
 import { doc, updateDoc } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
+import '../App.css'
 
 function EditProfilePage() {
   const [profilePhoto, setProfilePhoto] = useState(null);
@@ -78,8 +79,8 @@ function EditProfilePage() {
         height="100"
         style={{ borderRadius: '50%' }}
       />
-      <h1 className="header">Edit your profile</h1>
-      <form>
+      <h1 className="fancy-header">Edit your profile</h1>
+      <form className="form-group">
         <label>
           Profile Photo:
           <input type="file" onChange={handleProfilePhotoChange} />
@@ -94,6 +95,7 @@ function EditProfilePage() {
       <button type="button" className="fancy-button" onClick={handleSaveProfile}>
         Save Profile
       </button>
+      <br></br>
       <br></br>
       <button onClick={() => navigate("/profile-page")} className="fancy-button">
           View Profile
