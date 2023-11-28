@@ -23,7 +23,7 @@ function EditProfilePage() {
     const docRef = doc(firestore, 'profiles', user.uid);
       try {
         await updateDoc(docRef, {
-          Bio: updatedBio,
+          bio: updatedBio,
           // Add more fields and values as needed
         });
         console.log('Document successfully updated');

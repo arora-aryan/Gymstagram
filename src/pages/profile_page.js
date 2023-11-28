@@ -52,7 +52,11 @@ const navigate = useNavigate();
       {currentUser && (
         <div>
           <img src={currentUser.photoURL} alt="Profile" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
+          <p>Username:</p>
+          <p>{currentUser.User_Name}</p>
+          <p>Bio:</p>
           <p>{currentUser.bio}</p>
+  
         </div>
       )}
       <Link to="/edit-profile">
