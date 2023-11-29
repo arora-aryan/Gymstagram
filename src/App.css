@@ -178,10 +178,9 @@ body .fancy-header {
   margin-right: 20px; /* Adjust the value to control the horizontal space */
 }
 
-/* Add both vertical and horizontal spacing */
 .custom-spacer {
-  margin-bottom: 20px; /* Adjust the vertical space */
-  margin-right: 20px; /* Adjust the horizontal space */
+  margin-bottom: 20px; /* vertical */
+  margin-right: 20px;  /* horizontal */
 }
 
 .form-center {
@@ -190,46 +189,46 @@ body .fancy-header {
   align-items: center;
   justify-content: center;
 }
-/* Assuming you have a CSS file, for example, styles.css */
 
 .bio-style {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 5px solid #ccc;
   border-radius: 4px;
-  resize: vertical; /* Allow vertical resizing */
-  min-height: 100px; /* Set a minimum height */
-  font-size: 16px; /* Adjust the font size */
-  color: #007BFF; /* Set the text color to blue */
-  font-weight: bold; /* Set the font weight to bold */
+  resize: vertical; /*  vertical  */
+  min-height: 100px; /* minimum height */
+  font-size: 16px; 
+  color: #007BFF; 
+  font-weight: bold; 
 }
 
-/* Optional: Add hover and focus styles for a better user experience */
 .bio-style:hover,
 .bio-style:focus {
-  border-color: #007BFF; /* Change border color on hover/focus */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow on hover/focus */
+  border-color: #007BFF; 
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); 
 }
+
+.grayed-out {
+  color: #999; 
+}
+
 
 .small-font {
   font-size: 10px;
+  color: #4a90e2;
 }
 
-.small-font {
-  font-size: 10px;
+.medium-font {
+  font-size: 20px;
+  color: #4a90e2;
 }
 
-.small-font {
-  font-size: 10px;
+.large-font {
+  font-size: 35px;
+  color: #4a90e2;
 }
 
-.small-font {
-  font-size: 10px;
+.huge-font {
+  font-size: 50px;
+  color: #4a90e2;
 }
-/*
-fonts and formatting
- small font
-   medium font
-   big font
-   huge font
-*/

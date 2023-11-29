@@ -1,16 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { storage, firestore } from '../firebase';
 import Logo from '../logo.jpeg';
-import { doc, updateDoc } from 'firebase/firestore';
+import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
-import '../App.css'
+import '../App.css';
 
 function EditProfilePage() {
   const [profilePhoto, setProfilePhoto] = useState(null);
   const [bio, setBio] = useState('');
   const navigate = useNavigate(); // useNavigate hook for navigation
-  const fileInputRef = React.createRef();
+  const fileInputRef = React.createRef(); // a way to really make the choose file button better
+  const [profileSaved, setProfileSaved] = useState(false);
+
+  useEffect(() => {
+    const fetchBio = async () => {
+      try {
+        const auth = getAuth();
+        const user = auth.currentUser;
+
+        if (user) {
+          const docRef = doc(firestore, 'profiles', user.uid);
+          const docSnap = await getDoc(docRef);
+
+          if (docSnap.exists()) {
+            setBio(docSnap.data().bio || ''); // Set the user's bio if available, otherwise an empty string
+            console.log("data all", docSnap.data())
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user bio:', error);
+      }
+    };
+
+    fetchBio();
+  }, []); 
+ 
 
   const handleProfilePhotoChange = (e) => {
     const file = e.target.files[0];
@@ -30,7 +55,7 @@ function EditProfilePage() {
       try {
         await updateDoc(docRef, {
           bio: updatedBio,
-          // Add more fields and values as needed
+          // more data later on 
         });
         console.log('Document successfully updated');
       } catch (error) {
@@ -41,19 +66,19 @@ function EditProfilePage() {
   
  
   const handleProfileClick = async () => {
-    await handleSaveProfile(); // Ensure that handleSaveProfile is invoked properly
+    await handleSaveProfile(); // await makes sure that handleSaveProfile completes before navigate, think threading, thread.join() or return statement if then pass 
     navigate('/profile-page');
   };
   
 
   const handleSaveProfile = async () => {
     try {
-      // Upload profile photo to Firebase Storage
+      // profile photo to Firebase Storage
       const storageRef = storage.ref();
       const profilePhotoRef = storageRef.child(`profile-photos/${profilePhoto.name}`);
       await profilePhotoRef.put(profilePhoto);
 
-      // Get download URL of the uploaded photo
+      // ret download URL of the uploaded photo
       const photoURL = await profilePhotoRef.getDownloadURL();
 
       // Store profile data (photoURL and bio) in Firestore
@@ -64,10 +89,10 @@ function EditProfilePage() {
 
       console.log('Profile Photo URL:', photoURL);
       console.log('Bio:', bio);
-      // Check if the data was successfully stored in Firestore
+      // data was successfully stored in Firestore?
       if (profileRef.id) {
         console.log('Profile saved successfully!');
-        // Navigate to the ProfilePage if successful
+        //  ProfilePage if successful
         navigate('/profile-page');
       } else {
         console.error('Error saving profile. Please try again.');
@@ -77,10 +102,34 @@ function EditProfilePage() {
     }
   };
   const handleFileButtonClick = () => {
-    // Trigger a click on the hidden file input
+    // click on the hidden file input
     fileInputRef.current.click();
   };
 
+  const logCurrentUser = async () => { //don't delete this b/c actually useful example :D
+    try {
+      const auth = getAuth();
+      const user = auth.currentUser;
+  
+      if (user) {
+        const docRef = doc(firestore, 'profiles', user.uid);
+        const docSnap = await getDoc(docRef);
+  
+        if (docSnap.exists()) {
+          console.log('User ID:', docSnap.id);
+          console.log('User Bio:', docSnap.data()['bio']);
+        } else {
+          console.log('No profile data found for the current user.');
+        }
+      } else {
+        console.log('No user is currently logged in.');
+      }
+    } catch (error) {
+      console.error('Error fetching current user data:', error);
+    }
+  };
+  
+  //the &#8203; is a zero width space that upon removal will not have any space between the text profile photo and the filename uploaded
   return (
     <div>
       <img
@@ -91,12 +140,12 @@ function EditProfilePage() {
         height="100"
         style={{ borderRadius: '50%' }}
       />
-      <h1 className="fancy-header">Edit your profile</h1>
+      <h1 className="large-font">Edit Your Profile</h1>
       <form className="form-center">
-        <label>
-          Profile Photo: 
+        <label className='medium-font'>
+          Profile Photo:     &#8203; 
           <div className="custom-file-input">
-          <span id="fileInputLabel">...</span>
+          <span id="fileInputLabel">  &#8203;</span>
             <input
               type="file"
               onChange={handleProfilePhotoChange}
@@ -106,7 +155,7 @@ function EditProfilePage() {
           </div>
         </label>
         <br />
-        {/*separate button for a better ui experience :D wow*/}
+        {/*separate button for a better ui experience :D wowee*/}
         
         <button type="button" onClick={handleFileButtonClick} className="fancy-button">
           Choose File
@@ -117,22 +166,28 @@ function EditProfilePage() {
         </button>
         <br />
         
-        <label className='small-font'>
+        <label className='medium-font'>
           Bio:
+          <br></br>
           <textarea
             value={bio}
             onChange={handleBioChange}
             className="bio-style"
+            placeholder='ex: push pull legs ... eat sleep eat repeat ... selling secret sauce for 2.49 Mexican Rials'
           />
+          
         </label>
         <br />
-        <button type="button" className="fancy-button" onClick={handleSaveProfile}>
+        {/* <button type="button" className="fancy-button" onClick={handleSaveProfile}>
           Save Profile
-        </button>
-      </form>
+        </button> */}
+      </form> 
     </div>
   );
 }
 
 export default EditProfilePage;
 
+{/* <button type="button" className="fancy-button" onClick={logCurrentUser}>
+        LogUser
+      </button> */}
