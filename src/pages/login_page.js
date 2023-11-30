@@ -55,7 +55,7 @@ const handleCreateAccount = () => {
         height="100" 
         style={{ borderRadius: '50%' }} // Apply the circular shape
         />
-        <h1 className="fancy-header">Gymstagram</h1>
+        <h1 className="fancy-header">Gymstant</h1>
       <form onSubmit={handleLogin}>
         <input
           className="fancy-input"
@@ -74,7 +74,7 @@ const handleCreateAccount = () => {
         />
         <br />
         <div style={{ height: '10px' }}></div>
-        <button type="submit" className="fancy-button">Log in</button>
+        <button type="submit" class="fancy-button">Log in</button>
         <br />
         <br />
         <button type="submit" className="submit-button" onClick={handleCreateAccount}>Create Account</button>
