@@ -52,25 +52,10 @@ function EditProfilePage() {
     }
   };
   
-  const handleBioChange = async (e) => {
-    const updatedBio = e.target.value;
-    setBio(updatedBio);
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const docRef = doc(firestore, 'profiles', user.uid);
-      try {
-        await updateDoc(docRef, {
-          bio: updatedBio,
-          location,
-          phoneNumber,
-        });
-        console.log('Document successfully updated');
-      } catch (error) {
-        console.error('Error updating document: ', error);
-      }
-      
+  const handleBioChange = (e) => {
+    setBio(e.target.value);
   };
-
+  
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
   };
@@ -79,6 +64,25 @@ function EditProfilePage() {
     setPhoneNumber(e.target.value);
   };
   
+  // Save profile function
+  const handleSaveProfile = async () => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const docRef = doc(firestore, 'profiles', user.uid);
+  
+    try {
+      await updateDoc(docRef, {
+        bio,
+        location,
+        phoneNumber,
+      });
+      console.log('Profile successfully updated');
+    } catch (error) {
+      console.error('Error updating profile: ', error);
+    }
+  };
+  
+  
  
   const handleProfileClick = async () => {
     await handleSaveProfile(); // await makes sure that handleSaveProfile completes before navigate, think threading, thread.join() or return statement if then pass 
@@ -86,38 +90,38 @@ function EditProfilePage() {
   };
   
 
-  const handleSaveProfile = async () => {
-    try {
-      // profile photo to Firebase Storage
-      const storageRef = storage.ref();
-      const profilePhotoRef = storageRef.child(`profile-photos/${profilePhoto.name}`);
-      await profilePhotoRef.put(profilePhoto);
+  // const handleSaveProfile = async () => {
+  //   try {
+  //     // profile photo to Firebase Storage
+  //     const storageRef = storage.ref();
+  //     const profilePhotoRef = storageRef.child(`profile-photos/${profilePhoto.name}`);
+  //     await profilePhotoRef.put(profilePhoto);
 
-      // ret download URL of the uploaded photo
-      const photoURL = await profilePhotoRef.getDownloadURL();
+  //     // ret download URL of the uploaded photo
+  //     const photoURL = await profilePhotoRef.getDownloadURL();
 
-      // Store profile data (photoURL and bio) in Firestore
-      const profileRef = await firestore.collection('profiles').add({
-        photoURL,
-        bio,
-        location,
-        phoneNumber,
-      });
+  //     // Store profile data (photoURL and bio) in Firestore
+  //     const profileRef = await firestore.collection('profiles').add({
+  //       photoURL,
+  //       bio,
+  //       location,
+  //       phoneNumber,
+  //     });
 
-      console.log('Profile Photo URL:', photoURL);
-      console.log('Bio:', bio);
-      // data was successfully stored in Firestore?
-      if (profileRef.id) {
-        console.log('Profile saved successfully!');
-        //  ProfilePage if successful
-        navigate('/profile-page');
-      } else {
-        console.error('Error saving profile. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error saving profile:', error.message);
-    }
-  };
+  //     console.log('Profile Photo URL:', photoURL);
+  //     console.log('Bio:', bio);
+  //     // data was successfully stored in Firestore?
+  //     if (profileRef.id) {
+  //       console.log('Profile saved successfully!');
+  //       //  ProfilePage if successful
+  //       navigate('/profile-page');
+  //     } else {
+  //       console.error('Error saving profile. Please try again.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error saving profile:', error.message);
+  //   }
+  // };
 
   const handleFileButtonClick = () => {
     // click on the hidden file input
@@ -160,45 +164,15 @@ function EditProfilePage() {
       />
       <h1 className="large-font">Edit Your Profile</h1>
       <form className="form-center">
-        <label className='medium-font'>
-          Profile Photo:     &#8203; 
-          <div className="custom-file-input">
-          <span id="fileInputLabel">  &#8203;</span>
-            <input
-              type="file"
-              onChange={handleProfilePhotoChange}
-              className="file-input"
-              ref={fileInputRef}
-            />
-          </div>
-        </label>
-        <br />
-        {/*separate button for a better ui experience :D wowee*/}
-        
-        <button type="button" onClick={handleFileButtonClick} className="fancy-button">
-          Choose File
-        </button>
-        <br />
-        <button onClick={handleProfileClick} className="fancy-button">
-          View Profile
-        </button>
-        <br />
-        
-        <label className='medium-font'>
-          Bio:
-          <br></br>
+        <div className="input-group">
           <textarea
             value={bio}
             onChange={handleBioChange}
             className="bio-style"
-            placeholder='Type here: '
+            placeholder='Type your bio here...'
           />
-          
-        </label>
-
-        <label className='medium-font'>
-          Location
-          <br></br>
+        </div>
+        <div className="input-group">
           <input
             type="text"
             value={location}
@@ -206,11 +180,8 @@ function EditProfilePage() {
             className="location-style"
             placeholder='Enter your location'
           />
-        </label>
-        <br />
-        <label className='medium-font'>
-          Phone Number:
-          <br></br>
+        </div>
+        <div className="input-group">
           <input
             type="tel"
             value={phoneNumber}
@@ -220,16 +191,31 @@ function EditProfilePage() {
             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             title="Enter a phone number in the format: 123-456-7890"
           />
-      </label>
-      <br />
-
-        <br />
-        {/* <button type="button" className="fancy-button" onClick={handleSaveProfile}>
-          Save Profile
-        </button> */}
-      </form> 
+        </div>
+        <button type="button" onClick={handleFileButtonClick} className="fancy-button">
+          Choose File
+        </button>
+        <div className="custom-file-input">
+          <span id="fileInputLabel">Upload Profile Photo</span>
+          <input
+            type="file"
+            onChange={handleProfilePhotoChange}
+            className="file-input"
+            ref={fileInputRef}
+          />
+        </div>
+        <div className="button-group">
+          <button type="button" onClick={handleSaveProfile} className="fancy-button">
+            Save Profile
+          </button>
+          <button onClick={handleProfileClick} className="fancy-button">
+            View Profile
+          </button>
+        </div>
+        {profileSaved && <p>Profile updated successfully!</p>}
+      </form>
     </div>
-  );
+  );  
 }
 
 export default EditProfilePage;
