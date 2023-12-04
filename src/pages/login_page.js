@@ -1,61 +1,75 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import Logo from '../logo.jpeg';
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase';
-
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import Logo from "../logo.jpeg";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithPopup,
+} from "firebase/auth";
+import { auth, googleProvider } from "../firebase";
 
 function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate(); // Initialize the navigate function
 
-//   const handleLogin = async (e) => {
-//     e.preventDefault()
-//     const auth = getAuth()
-//     try{
-//         await signInWithEmailAndPassword(auth, username, password);
-//         navigate('/homepage');
-//     }
-//     catch (error){
-//         setErrorMessage("Login not recognized. Please try again.")
-//     }
-// }
-const handleLogin = async (e) => {
-  e.preventDefault();
-  const auth = getAuth();
+  //   const handleLogin = async (e) => {
+  //     e.preventDefault()
+  //     const auth = getAuth()
+  //     try{
+  //         await signInWithEmailAndPassword(auth, username, password);
+  //         navigate('/homepage');
+  //     }
+  //     catch (error){
+  //         setErrorMessage("Login not recognized. Please try again.")
+  //     }
+  // }
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const auth = getAuth();
 
-  try {
-    await signInWithEmailAndPassword(auth, username, password);
+    try {
+      await signInWithEmailAndPassword(auth, username, password);
 
-    // Wait for the authentication to complete before navigating
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, navigate to the homepage
-        navigate('/homepage');
-        unsubscribe(); // Remove the observer after navigating
-      }
-    });
-  } catch (error) {
-    setErrorMessage("Login not recognized. Please try again.");
-  }
-};
+      // Wait for the authentication to complete before navigating
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        if (user) {
+          // User is signed in, navigate to the homepage
+          navigate("/homepage");
+          unsubscribe(); // Remove the observer after navigating
+        }
+      });
+    } catch (error) {
+      setErrorMessage("Login not recognized. Please try again.");
+    }
+  };
 
+  const handleCreateAccount = () => {
+    navigate("/create-account"); // Redirect to the create_account page
+  };
 
-const handleCreateAccount = () => {
-  navigate('/create-account'); // Redirect to the create_account page
-};
+  const signInWithGoogle = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      navigate("/homepage");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div>
       <img
-        id="myImageElement" src={Logo} alt="Logo"
-        width="100" 
-        height="100" 
-        style={{ borderRadius: '50%' }} // Apply the circular shape
-        />
-        <h1 className="fancy-header">Gymstant</h1>
+        id="myImageElement"
+        src={Logo}
+        alt="Logo"
+        width="100"
+        height="100"
+        style={{ borderRadius: "50%" }} // Apply the circular shape
+      />
+      <h1 className="fancy-header">Gymstant</h1>
       <form onSubmit={handleLogin}>
         <input
           className="fancy-input"
@@ -73,17 +87,30 @@ const handleCreateAccount = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
-        <div style={{ height: '10px' }}></div>
-        <button type="submit" class="fancy-button">Log in</button>
+        <div style={{ height: "10px" }}></div>
+        <button type="submit" class="fancy-button">
+          Log in
+        </button>
+        <br />
+        <button class="fancy-button" onClick={signInWithGoogle} >Sign In with Google</button>
         <br />
         <br />
-        <button type="submit" className="submit-button" onClick={handleCreateAccount}>Create Account</button>
+        <button
+          type="submit"
+          className="submit-button"
+          onClick={handleCreateAccount}
+        >
+          Create Account
+        </button>
       </form>
-      {errorMessage && <div style={{color: "#ff0000"}} className="error"> {errorMessage} </div>}
+      {errorMessage && (
+        <div style={{ color: "#ff0000" }} className="error">
+          {" "}
+          {errorMessage}{" "}
+        </div>
+      )}
     </div>
   );
-};
-
-
+}
 
 export default LoginPage;
