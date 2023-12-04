@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { firestore } from '../firebase'; // Ensure this import is correct
-import { doc, collection, getDoc, getDocs } from "firebase/firestore";
+import { doc, collection, getDoc, getDocs, updateDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import './home_page.css';
 import '../App.css';
@@ -13,7 +13,6 @@ function HomePage() {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [users, setUsers] = useState([]); // State for users
-  
   const navigate = useNavigate();
     
   useEffect(() => {
@@ -73,6 +72,23 @@ function HomePage() {
     }
   };
   
+  const handleMatchClick = async (likedUserIds) => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user) {
+      const userRef = doc(firestore, "profiles", user.uid);
+      const userDoc = await getDoc(userRef);
+      if (userDoc.exists()) {
+        let likedUsers = userDoc.data().likedUsers || [];
+        likedUserIds.forEach(likedUserId => {
+          if (!likedUsers.includes(likedUserId)) {
+            likedUsers.push(likedUserId);
+          }
+        });
+        await updateDoc(userRef, { likedUsers });
+      }
+    }
+  };
 
   const handleProfileClick = () => {
     navigate('/profile-page');
@@ -101,6 +117,10 @@ function HomePage() {
         {filteredUsers.map((user) => (
           <li key={user.id} className="user-box">
             {user.profile_picture} | {user.User_Name} | {user.bio}
+            <br></br>
+            <button onClick={() => handleMatchClick([user.id])}>
+              Like
+            </button>
           </li>
         ))}
 
