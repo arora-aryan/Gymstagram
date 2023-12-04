@@ -147,9 +147,12 @@ function HomePage() {
           {user.location && <span className="bio">{user.location}</span>} {/* Location on a new line */}
           <br />
           {isMutualLike(user.id) ? (
+            <>
             <button className="matched-button">
-              Matched
+            Matched
             </button>
+            <p>Phone: {user.phoneNumber}</p> {/* Display phone number */}
+        </>
           ) : (
             <button onClick={() => handleMatchClick([user.id])}>
               Like
