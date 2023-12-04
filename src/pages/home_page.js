@@ -99,11 +99,11 @@ function HomePage() {
       <button className="fancy-button" onClick={handleProfileClick}>
         View Profile
       </button>
-      <h1>Post Grid</h1>
+      <h1>Find Your Gym Buddy!</h1>
       <div>
       <button className="fancy-post-button" onClick={() => {navigate('/create')}}> &#10133; </button>
       </div>
-      <h1>Users</h1>
+      <h2>Users</h2>
       <div>
       <input
         className="fancy-search-bar" 

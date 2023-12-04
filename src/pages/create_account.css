@@ -1,47 +1,70 @@
+/* create_account.css */
+
 .App-header {
-    text-align: center;
-    background-color: lightsteelblue;
-    color: white;
-    padding: 20px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f3f4f6; /* Light background color */
+}
+
+.container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.container h1 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.input-field {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* To ensure padding doesn't affect overall width */
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #667eea; /* Highlight color when focused */
+}
+
+.submit-button {
+  display: block;
+  background-color: #667eea; /* Button color */
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #5a67d8; /* Slightly darker on hover */
+}
+
+/* You can add media queries for responsiveness */
+@media (max-width: 600px) {
   .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    text-align: left;
+    width: 90%;
+    padding: 1rem;
   }
-  
-  label {
-    font-weight: bold;
-    margin-bottom: 8px;
-  }
-  
-  .input-field {
-    width: 40%;
-    padding: 8px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .submit-button {
-    background-color: navy;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .fancy-header {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .error {
-    color: red;
-    margin-top: 10px;
-  }
+}

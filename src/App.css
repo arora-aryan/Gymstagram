@@ -127,8 +127,6 @@ body .fancy-header {
   width: 100%; /* take the full width available */
 }
 
-
-
 /*POSTS*/
 .post {
   border: 9px solid #ccc;
@@ -263,4 +261,12 @@ body .fancy-header {
 .huge-font {
   font-size: 50px;
   color: #4a90e2;
+}
+
+ul {
+  list-style-type: none; /* Removes bullet points */
+  padding-left: 0; /* Removes default padding */
+  margin: 0 auto; /* Removes default margin and centers the list */
+  display: flex; /* Optional: Use if you want a flexbox layout */
+  flex-direction: column; /* Optional: Stacks items vertically */
 }

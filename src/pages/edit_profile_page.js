@@ -4,6 +4,7 @@ import { storage, firestore } from '../firebase';
 import Logo from '../logo.jpeg';
 import { doc, updateDoc, getDoc } from 'firebase/firestore';
 import { getAuth } from "firebase/auth";
+import "./edit_profile_page.css";
 import '../App.css';
 
 function EditProfilePage() {
@@ -196,7 +197,7 @@ function EditProfilePage() {
         </label>
 
         <label className='medium-font'>
-          Location:
+          Location
           <br></br>
           <input
             type="text"
@@ -215,10 +216,12 @@ function EditProfilePage() {
             value={phoneNumber}
             onChange={handlePhoneNumberChange}
             className="location-style"
-            placeholder='Enter your phone number'
+            placeholder='123-456-7890'
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            title="Enter a phone number in the format: 123-456-7890"
           />
-        </label>
-        <br />
+      </label>
+      <br />
 
         <br />
         {/* <button type="button" className="fancy-button" onClick={handleSaveProfile}>
