@@ -124,11 +124,10 @@ function HomePage() {
         style={{ borderRadius: "50%" }} // Apply the circular shape
       />
       <h1>Gymstant</h1>
-      <br/>
+      <h1>Find Your Gym Buddy!</h1>
       <button className="fancy-button" onClick={handleProfileClick}>
         View Profile
       </button>
-      <h1>Find Your Gym Buddy!</h1>
       <div>
       <button className="fancy-post-button" onClick={() => {navigate('/create')}}> &#10133; </button>
       </div>

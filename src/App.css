@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
-.gymstant-title {
-  font-family: 'Pacifico', cursive;
-  font-size: 48px;
-  background: -webkit-linear-gradient(dodgerblue, cornflowerblue); /* Updated gradient colors */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+h1 {
+  font-family: 'Arial', sans-serif; /* Example font, you can choose another */
+  font-size: 2.5em; /* Larger font size */
+  color: #4a90e2; /* A vibrant blue, you can choose another color */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+  text-transform: uppercase; /* Uppercase letters for stylistic preference */
+  margin-bottom: 20px; /* Adjust as needed */
+  padding: 10px; /* Adds space around the text */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   margin: 20px 0;
   animation: pulse 2s infinite;
