@@ -159,32 +159,39 @@ function HomePage() {
           value={searchResults}
           onChange={(e) => setSearchResults(e.target.value)}
         />
-        <ul style={{ listStyleType: "none", textAlign: "center" }}>
-          {filteredUsers.map((user) => (
-            <li key={user.id} className="user-box">
-              {user.profile_picture}
-              <span className="username">{user.User_Name}</span>
-              <br />
-              < UserPfp id={user.id}/>
-              <span className="bio">{user.bio}</span>
-              <br />
-              {isMutualLike(user.id) ? (
-                <button className="matched-button">Matched</button>
-              ) : currentUserLikes.includes(user.id) ? (
-                <button disabled className="liked-button">
-                  Liked
-                </button>
-              ) : (
-                <button onClick={() => handleMatchClick(user.id)}>Like</button>
-              )}
-            </li>
-          ))}
+          <ul style={{ listStyleType: 'none', textAlign: "center" }}>
+            {filteredUsers.map((user) => (
+              <li key={user.id} className="user-box">
+                {user.profile_picture}
+                <span className="username">{user.User_Name}</span>
+                <br />
+                <span className="bio">{user.bio}</span>
+                <br />
+                {isMutualLike(user.id) ? (
+                  <>
+                    <button className="matched-button">
+                      Matched
+                    </button>
+                    <p>Phone: {user.phoneNumber}</p> {/* Display phone number */}
+                  </>
+                ) : currentUserLikes.includes(user.id) ? (
+                  <button disabled className="liked-button">
+                    Liked
+                  </button>
+                ) : (
+                  <button onClick={() => handleMatchClick(user.id)}>
+                    Like
+                  </button>
+                )}
+              </li>
+            ))}
+          </ul>
+
           {filteredUsers.length === 0 && searchResults && (
             <div className="no-users-found">No users found</div>
           )}
-        </ul>
       </div>
-    </div>
+      </div>
   );
 }
 
