@@ -85,25 +85,34 @@ function HomePage() {
       </button>
       <h1>Post Grid</h1>
       <div>
-        <button className="fancy-post-button" onClick={() => {navigate('/create')}}> &#10133; </button>
+      <button className="fancy-post-button" onClick={() => {navigate('/create')}}> &#10133; </button>
       </div>
       <h1>Users</h1>
-      <div >
-        <input
-          className = "fancy-search-bar" 
-          type="text" 
-          placeholder="Search Users..." 
-          value={searchResults} 
-          onChange={(e) => setSearchResults(e.target.value)}
-        />
-        <ul style={{ listStyleType: 'none' }}>
-          {filteredUsers.map((user) => (
-            <li key={user.id}>{user.profile_picture} | {user.User_Name} | {user.id} | {user.bio}</li>
-          ))}
-        </ul>
-      </div>
+      <div>
+      <input
+        className="fancy-search-bar" 
+        type="text" 
+        placeholder="Search Users..." 
+        value={searchResults} 
+        onChange={(e) => setSearchResults(e.target.value)}
+      />
+      <ul style={{ listStyleType: 'none', textAlign: "center" }}>
+        {filteredUsers.map((user) => (
+          <li key={user.id} className="user-box">
+            {user.profile_picture} | {user.User_Name} | {user.bio}
+          </li>
+        ))}
+
+        {filteredUsers.length === 0 && searchResults && (
+          <div className="no-users-found">
+            No users found
+          </div>
+        )}
+      </ul>
+    </div>
     </div>
   );
+  
 }
 
 export default HomePage;
