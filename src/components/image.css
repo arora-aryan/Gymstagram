@@ -15,3 +15,10 @@
   height: 10vw;
   object-fit: cover;
 }
+
+.bounded-image {
+  max-width: 30vw;
+  max-height: 30vw;
+  width: auto;
+  height: auto;
+}

@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { ref, getDownloadURL } from "firebase/storage";
 import "../components/image.css";
 import { UserPfp } from "../components/userpfp.js";
+import { ProfilePost } from "../components/postimage.js";
 
 function ProfileList() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -99,6 +100,9 @@ function ProfileList() {
         {" "}
         &#10133;{" "}
       </button>
+      <br />
+      < ProfilePost imageOnly={true}/>
+
     </div>
   );
 }

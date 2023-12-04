@@ -3,9 +3,8 @@ import { firestore, storage } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import './create_post.css';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-
-//throw error when image too large
+import { useNavigate } from 'react-router-dom';
+import { ProfilePost } from '../components/postimage';
 
 function getID() {
   const currentTime = new Date();
@@ -17,12 +16,7 @@ function getID() {
 
 function CreatePost() {
   const [postTitle, setPostTitle] = useState('');
-  const [file, setFile] = useState(null); // State to hold the uploaded file
   const navigate = useNavigate();
-
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]); // Capture the file
-  };
 
   const handleProfileClick = () => {
     navigate('/profile-page');
@@ -32,34 +26,21 @@ function CreatePost() {
     e.preventDefault();
     try {
       let postID = getID();
-      let fileUrl = '';
 
-      if (file) {
-        // Upload the file to Firebase Storage
-        const fileRef = ref(storage, `posts/${postID}`);
-        const uploadResult = await uploadBytes(fileRef, file);
-        fileUrl = await getDownloadURL(uploadResult.ref); // Get the URL of the uploaded file
-        console.log("fileurl: ", fileUrl);
-      }
-
-      // Save post data along with file URL to Firestore
+      // Save post data to Firestore
       await setDoc(doc(firestore, 'posts', postID), {
         Post_Title: postTitle,
-        File_URL: fileUrl // Include the file URL in your document
       });
 
       setPostTitle('');
-      setFile(null); // Reset the file state
     } catch (error) {
       console.error('Error occurred: ', error);
     }
   };
 
-
-
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <div className="component">Create a post</div>
         <div className="component">
           <input
@@ -71,20 +52,13 @@ function CreatePost() {
             name="postTitle"
             placeholder="Write a caption..."
           />
-          <br />
-          <label className="component" htmlFor="file-upload">Upload</label>
-          <input
-            className="component"
-            id="file-upload"
-            type="file"
-            onChange={handleFileChange}
-          />
         </div>
-        <button type="btn-submit">Post</button>
-      </form>
-      <button onClick={handleProfileClick}>
-        Profile
-      </button>
+        <button type="submit">Post</button>
+      </form> */}
+      <button className="fancy-button" onClick={handleProfileClick}>View Profile</button>
+
+      {/* Include the ProfilePost component */}
+      <ProfilePost />
     </>
   );
 }

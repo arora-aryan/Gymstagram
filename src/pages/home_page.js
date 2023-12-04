@@ -15,6 +15,7 @@ import "../App.css";
 import "./create_post.js";
 import Logo from "../logo.jpeg";
 import { UserPfp } from "../components/userpfp.js";
+import { ProfilePost } from "../components/postimage.js";
 
 function HomePage() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -166,6 +167,7 @@ function HomePage() {
               <span className="username">{user.User_Name}</span>
               <br />
               < UserPfp id={user.id}/>
+              <ProfilePost imageOnly={true} id={user.id} />
               <span className="bio">{user.bio}</span>
               <br />
               {isMutualLike(user.id) ? (
