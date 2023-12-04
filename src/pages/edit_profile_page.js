@@ -12,6 +12,9 @@ function EditProfilePage() {
   const navigate = useNavigate(); // useNavigate hook for navigation
   const fileInputRef = React.createRef(); // a way to really make the choose file button better
   const [profileSaved, setProfileSaved] = useState(false);
+  const [location, setLocation] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+
 
   useEffect(() => {
     const fetchBio = async () => {
@@ -25,6 +28,8 @@ function EditProfilePage() {
 
           if (docSnap.exists()) {
             setBio(docSnap.data().bio || ''); // Set the user's bio if available, otherwise an empty string
+            setLocation(docSnap.data().location || ''); // Set the user's location
+            setPhoneNumber(docSnap.data().phoneNumber || ''); // Set the user's phone number
             console.log("data all", docSnap.data())
           }
         }
@@ -55,13 +60,22 @@ function EditProfilePage() {
       try {
         await updateDoc(docRef, {
           bio: updatedBio,
-          // more data later on 
+          location,
+          phoneNumber,
         });
         console.log('Document successfully updated');
       } catch (error) {
         console.error('Error updating document: ', error);
       }
       
+  };
+
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value);
+  };
+  
+  const handlePhoneNumberChange = (e) => {
+    setPhoneNumber(e.target.value);
   };
   
  
@@ -85,6 +99,8 @@ function EditProfilePage() {
       const profileRef = await firestore.collection('profiles').add({
         photoURL,
         bio,
+        location,
+        phoneNumber,
       });
 
       console.log('Profile Photo URL:', photoURL);
@@ -173,10 +189,36 @@ function EditProfilePage() {
             value={bio}
             onChange={handleBioChange}
             className="bio-style"
-            placeholder='ex: push pull legs ... eat sleep eat repeat ... selling secret sauce for 2.49 Mexican Rials'
+            placeholder='Type here: '
           />
           
         </label>
+
+        <label className='medium-font'>
+          Location:
+          <br></br>
+          <input
+            type="text"
+            value={location}
+            onChange={handleLocationChange}
+            className="location-style"
+            placeholder='Enter your location'
+          />
+        </label>
+        <br />
+        <label className='medium-font'>
+          Phone Number:
+          <br></br>
+          <input
+            type="tel"
+            value={phoneNumber}
+            onChange={handlePhoneNumberChange}
+            className="location-style"
+            placeholder='Enter your phone number'
+          />
+        </label>
+        <br />
+
         <br />
         {/* <button type="button" className="fancy-button" onClick={handleSaveProfile}>
           Save Profile
