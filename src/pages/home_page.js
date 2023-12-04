@@ -69,21 +69,21 @@ function HomePage() {
       </button>
       <h1>postGrid</h1>
       <div>
-
-      <button className="fancy-post-button" onClick={() => {navigate('/create')}}> &#10133; </button>
+        <button className="fancy-post-button" onClick={() => {navigate('/create')}}> &#10133; </button>
       </div>
       <h1>Users</h1>
       <div style={{ textAlign: 'left' }}>
         <ul style={{ listStyleType: 'none' }}>
           {users.map((user) => (
-          <li key={user.id}>{user.profile_picture} | {user.User_Name} | {user.id} | {user.bio}</li>
-         ))}
+            <li key={user.id} className="user-box">
+              {user.profile_picture} | {user.User_Name} | {user.bio}
+            </li>
+          ))}
         </ul>
       </div>
-
     </div>
-
   );
+  
 }
 
 export default HomePage;
