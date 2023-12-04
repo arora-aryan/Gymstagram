@@ -89,7 +89,7 @@ function HomePage() {
     }
   };
   
-  const handleMatchClick = async (likedUserIds) => {
+  const handleMatchClick = async (likedUserId) => {
     const auth = getAuth();
     const user = auth.currentUser;
     if (user) {
@@ -97,15 +97,16 @@ function HomePage() {
       const userDoc = await getDoc(userRef);
       if (userDoc.exists()) {
         let likedUsers = userDoc.data().likedUsers || [];
-        likedUserIds.forEach(likedUserId => {
-          if (!likedUsers.includes(likedUserId)) {
-            likedUsers.push(likedUserId);
-          }
-        });
-        await updateDoc(userRef, { likedUsers });
+        if (!likedUsers.includes(likedUserId)) {
+          likedUsers.push(likedUserId);
+          await updateDoc(userRef, { likedUsers });
+          // Update local state to reflect the change
+          setCurrentUserLikes(prevLikes => [...prevLikes, likedUserId]);
+        }
       }
     }
   };
+  
 
   const handleProfileClick = () => {
     navigate('/profile-page');
@@ -142,30 +143,27 @@ function HomePage() {
       />
       <ul style={{ listStyleType: 'none', textAlign: "center" }}>
       {filteredUsers.map((user) => (
-      <li key={user.id} className="user-box">
-        {user.profile_picture}
-        <span className="username">{user.User_Name}</span>
-        <br />
-        <span className="bio">{user.bio}</span>
-        <br />
-        {isMutualLike(user.id) ? (
-          <button className="matched-button">
-            Matched
-          </button>
-        ) : isLonely(user.id) ? (
-          <button disabled className="liked-button">
-            Liked
-          </button>
-        ) : (
-          <button onClick={() => handleMatchClick([user.id])}>
-            Like
-          </button>
-        )}
-      </li>
-    ))}
-
-
-
+          <li key={user.id} className="user-box">
+            {user.profile_picture}
+            <span className="username">{user.User_Name}</span>
+            <br />
+            <span className="bio">{user.bio}</span>
+            <br />
+            {isMutualLike(user.id) ? (
+              <button className="matched-button">
+                Matched
+              </button>
+            ) : currentUserLikes.includes(user.id) ? (
+              <button disabled className="liked-button">
+                Liked
+              </button>
+            ) : (
+              <button onClick={() => handleMatchClick(user.id)}>
+                Like
+              </button>
+            )}
+          </li>
+        ))}
         {filteredUsers.length === 0 && searchResults && (
           <div className="no-users-found">
             No users found
