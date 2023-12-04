@@ -80,6 +80,7 @@ function HomePage() {
   
  return (
     <div>
+      <br/>
       <button className="fancy-button" onClick={handleProfileClick}>
         View Profile
       </button>
