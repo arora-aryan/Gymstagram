@@ -14,6 +14,7 @@ function HomePage() {
   const [currentUser, setCurrentUser] = useState(null);
   const [users, setUsers] = useState([]); // State for users
   const [currentUserId, setCurrentUserId] = useState(''); // State to store the current user's UID
+  const [currentUserLikes, setCurrentUserLikes] = useState([]);
 
   const navigate = useNavigate();
     
@@ -55,9 +56,16 @@ function HomePage() {
     if (docSnap.exists()) {
       console.log("Document data:", docSnap.data());
       setCurrentUser(docSnap.data());
+      setCurrentUserLikes(docSnap.data().likedUsers || []);
     } else {
       console.log("No such document!");
     }
+  };
+
+  const isMutualLike = (otherUserId) => {
+    const otherUser = users.find(user => user.id === otherUserId);
+    console.log("mutual");
+    return otherUser && otherUser.likedUsers && otherUser.likedUsers.includes(currentUserId) && currentUserLikes.includes(otherUserId);
   };
 
   const fetchUsers = async () => {
@@ -121,10 +129,20 @@ function HomePage() {
         {filteredUsers.map((user) => (
           <li key={user.id} className="user-box">
             {user.profile_picture} | {user.User_Name} | {user.bio}
-            <br></br>
+            {/* <br></br>
             <button onClick={() => handleMatchClick([user.id])}>
               Like
+            </button> */}
+            <br></br>
+            {isMutualLike(user.id) ? (
+            <button className="matched-button">
+            Matched
             </button>
+          ) : (
+            <button onClick={() => handleMatchClick([user.id])}>
+            Like
+            </button>
+          )}
           </li>
         ))}
 
