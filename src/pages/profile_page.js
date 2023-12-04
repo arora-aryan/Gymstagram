@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { firestore } from '../firebase'; // Ensure this import is correct
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { firestore } from "../firebase"; // Ensure this import is correct
 import { doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import './home_page.css'
-import '../App.css'
-import './create_post.js'
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-
+import "./home_page.css";
+import "../App.css";
+import "./create_post.js";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 function ProfileList() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -40,23 +39,24 @@ function ProfileList() {
     }
   };
 
-const navigate = useNavigate();
-    console.log("hi")
-    const today = new Date();
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const todayString = today.toLocaleDateString('en-US', options);
+  const navigate = useNavigate();
 
   return (
     <div>
       <h5 class="fancy-header">Profile</h5>
       {currentUser && (
         <div>
-          <img src={currentUser.photoURL} alt="Profile" style={{ width: '50px', height: '50px', borderRadius: '50%' }} />
+          <img
+            src={null}
+            alt="Profile"
+            style={{ width: "50px", height: "50px", borderRadius: "50%" }}
+          />
           <p>Username:</p>
           <p>{currentUser.User_Name}</p>
           <p>Bio:</p>
           <p>{currentUser.bio}</p>
-  
+          <p>pfp_link:</p>
+          <p>{currentUser.pfp_link}</p>
         </div>
       )}
       <Link to="/edit-profile">
@@ -66,32 +66,16 @@ const navigate = useNavigate();
         <button class="fancy-button">Home Page</button>
       </Link>
 
-
-      <button className="fancy-post-button" onClick={() => {navigate('/create')}}> &#10133; </button>
-
-    <div class="post">
-        <div class="post-header">
-            <img src="https://c4.wallpaperflare.com/wallpaper/734/359/761/men-police-ronnie-coleman-wallpaper-preview.jpg" alt="Profile Picture"/>
-            <div class="post-header-text">
-                <h3>User's Name</h3>
-            </div>
-        </div>
-        <p class="post-content">
-            Gymstagram! yeah buddy whoo #lightweight #whoo
-        </p>
-        <img src="https://i.makeagif.com/media/2-26-2016/laIMA9.gif" alt="Posted Image" class="post-image"/>
-        <p>{todayString}</p>
-        <div class="post-buttons">
-            <button>Like</button>
-            <button>Comment</button>
-            <button>Share</button>
-            <br></br>
-            <br></br>
-            <button> &#9888; Report Misinformation</button>
-        </div>
+      <button
+        className="fancy-post-button"
+        onClick={() => {
+          navigate("/create");
+        }}
+      >
+        {" "}
+        &#10133;{" "}
+      </button>
     </div>
-    </div>
-
   );
 }
 

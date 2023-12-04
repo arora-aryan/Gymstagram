@@ -92,7 +92,7 @@ function LoginPage() {
           Log in
         </button>
         <br />
-        <button class="fancy-button" onClick={signInWithGoogle} >Sign In with Google</button>
+        <button class="fancy-button" onClick={signInWithGoogle} >Sign In with Google (broken)</button>
         <br />
         <br />
         <button
