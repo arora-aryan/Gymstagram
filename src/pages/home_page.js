@@ -69,6 +69,10 @@ function HomePage() {
     return otherUser && otherUser.likedUsers && otherUser.likedUsers.includes(currentUserId) && currentUserLikes.includes(otherUserId);
   };
 
+  const isLonely = (otherUserId) => {
+    return currentUserLikes.includes(otherUserId) && !isMutualLike(otherUserId);
+  };
+
   const fetchUsers = async () => {
     try {
       const usersColRef = collection(firestore, "profiles");
@@ -112,6 +116,7 @@ function HomePage() {
       <img
         id="myImageElement"
         src={Logo}
+        className='img-spin'
         alt="Logo"
         width="100"
         height="100"
@@ -137,23 +142,28 @@ function HomePage() {
       />
       <ul style={{ listStyleType: 'none', textAlign: "center" }}>
       {filteredUsers.map((user) => (
-        <li key={user.id} className="user-box">
-          {user.profile_picture}
-          <span className="username">{user.User_Name}</span>
-          <br />
-          <span className="bio">{user.bio}</span>
-          <br />
-          {isMutualLike(user.id) ? (
-            <button className="matched-button">
-              Matched
-            </button>
-          ) : (
-            <button onClick={() => handleMatchClick([user.id])}>
-              Like
-            </button>
-          )}
-        </li>
-      ))}
+      <li key={user.id} className="user-box">
+        {user.profile_picture}
+        <span className="username">{user.User_Name}</span>
+        <br />
+        <span className="bio">{user.bio}</span>
+        <br />
+        {isMutualLike(user.id) ? (
+          <button className="matched-button">
+            Matched
+          </button>
+        ) : isLonely(user.id) ? (
+          <button disabled className="liked-button">
+            Liked
+          </button>
+        ) : (
+          <button onClick={() => handleMatchClick([user.id])}>
+            Like
+          </button>
+        )}
+      </li>
+    ))}
+
 
 
         {filteredUsers.length === 0 && searchResults && (
