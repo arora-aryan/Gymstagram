@@ -117,7 +117,8 @@ function HomePage() {
         height="100"
         style={{ borderRadius: "50%" }} // Apply the circular shape
       />
-      <h1>Gymstant</h1>
+      <h1 className="gymstant-title">Gymstant</h1>
+
       <br/>
       <button className="fancy-button" onClick={handleProfileClick}>
         View Profile
@@ -142,6 +143,8 @@ function HomePage() {
           <span className="username">{user.User_Name}</span>
           <br />
           <span className="bio">{user.bio}</span>
+          <br />
+          {user.location && <span className="bio">{user.location}</span>} {/* Location on a new line */}
           <br />
           {isMutualLike(user.id) ? (
             <button className="matched-button">
