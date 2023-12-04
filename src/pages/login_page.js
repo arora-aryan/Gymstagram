@@ -55,6 +55,7 @@ function LoginPage() {
       <img
         id="myImageElement"
         src={Logo}
+        class = "img-spin"
         alt="Logo"
         width="100"
         height="100"

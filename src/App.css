@@ -270,3 +270,17 @@ ul {
   display: flex; /* Optional: Use if you want a flexbox layout */
   flex-direction: column; /* Optional: Stacks items vertically */
 }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.img-spin {
+  animation: spin 4s linear infinite;
+  animation-timing-function: cubic-bezier(0.2, 0.4, 0.8, 1.5);
+}
