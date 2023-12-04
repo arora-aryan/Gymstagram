@@ -102,11 +102,25 @@ body .fancy-header {
   left: 3px; /* Positioned at the left */
 }
 
-
-.fancy-button:hover {
-  background-color: #4aa8e2; 
+.fancy-search-bar {
+  padding: 10px 30px; /* Adjusted padding for better fit in search area */
+  font-size: 16px;
+  background-color: #4ae2ad91;
+  color: #333333;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: fixed; /* Keeps the button in a fixed position */
+  top: 3px; /* Positioned at the top */
+  right: 3px; /* Positioned at the right */
+  z-index: 1000; /* Ensures the button is above other elements */
 }
 
+.fancy-search-bar::placeholder {
+  color: #888888;
+  opacity: 1;
+}
 
 .spacer {/* Adjust height as needed */
   height: 10px; 

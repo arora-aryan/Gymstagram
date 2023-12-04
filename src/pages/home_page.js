@@ -15,7 +15,7 @@ function HomePage() {
   const [users, setUsers] = useState([]); // State for users
   
   const navigate = useNavigate();
-
+    
   useEffect(() => {
     const auth = getAuth();
 
@@ -32,6 +32,21 @@ function HomePage() {
 
     return () => unsubscribe(); // Clean up the subscription
   }, []);
+
+  
+  const [searchResults, setSearchResults] = useState(''); // State for search query
+
+  // Function to filter users based on search query
+  const filteredUsers = users.filter(user => {
+    // Ensure that the properties exist before trying to access them
+    const userName = user.User_Name ? user.User_Name.toLowerCase() : '';
+    const bio = user.bio ? user.bio.toLowerCase() : '';
+  
+    return userName.includes(searchResults.toLowerCase()) ||
+           bio.includes(searchResults.toLowerCase());
+    // Add more fields to filter as needed
+  });
+  
 
   const fetchProfile = async (uid) => {
     const docRef = doc(firestore, "profiles", uid);
@@ -62,27 +77,32 @@ function HomePage() {
   const handleProfileClick = () => {
     navigate('/profile-page');
   };
-  return (
+  
+ return (
     <div>
       <button className="fancy-button" onClick={handleProfileClick}>
         View Profile
       </button>
-      <h1>postGrid</h1>
+      <h1>Post Grid</h1>
       <div>
-
-      <button className="fancy-post-button" onClick={() => {navigate('/create')}}> &#10133; </button>
+        <button className="fancy-post-button" onClick={() => {navigate('/create')}}> &#10133; </button>
       </div>
       <h1>Users</h1>
-      <div style={{ textAlign: 'left' }}>
+      <div >
+        <input
+          className = "fancy-search-bar" 
+          type="text" 
+          placeholder="Search Users..." 
+          value={searchResults} 
+          onChange={(e) => setSearchResults(e.target.value)}
+        />
         <ul style={{ listStyleType: 'none' }}>
-          {users.map((user) => (
-          <li key={user.id}>{user.profile_picture} | {user.User_Name} | {user.id} | {user.bio}</li>
-         ))}
+          {filteredUsers.map((user) => (
+            <li key={user.id}>{user.profile_picture} | {user.User_Name} | {user.id} | {user.bio}</li>
+          ))}
         </ul>
       </div>
-
     </div>
-
   );
 }
 

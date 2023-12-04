@@ -101,6 +101,7 @@ function EditProfilePage() {
       console.error('Error saving profile:', error.message);
     }
   };
+
   const handleFileButtonClick = () => {
     // click on the hidden file input
     fileInputRef.current.click();
@@ -187,7 +188,3 @@ function EditProfilePage() {
 }
 
 export default EditProfilePage;
-
-{/* <button type="button" className="fancy-button" onClick={logCurrentUser}>
-        LogUser
-      </button> */}

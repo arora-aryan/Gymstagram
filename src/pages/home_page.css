@@ -14,3 +14,10 @@
     top: 15px;
     left: 15px;
   }
+
+  .top-left-button {
+    position: fixed;
+    font-size: large;
+    top: 15px;
+    right: 15px;
+  }
