@@ -65,7 +65,7 @@ function LoginPage() {
         <input
           className="fancy-input"
           type="text"
-          placeholder="Username"
+          placeholder="Email"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -82,8 +82,6 @@ function LoginPage() {
         <button type="submit" class="fancy-button">
           Log in
         </button>
-        <br />
-        <button class="fancy-button" onClick={signInWithGoogle} >Sign In with Google</button>
         <br />
         <br />
         <button
