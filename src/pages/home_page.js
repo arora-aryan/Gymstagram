@@ -164,7 +164,7 @@ function HomePage() {
           {filteredUsers.map((user) => (
             <li key={user.id} className="user-box">
               {/* Restored the use of the <UserPfp> component for displaying profile pictures */}
-              <UserPfp id={user.id}/>
+              {/* <UserPfp id={user.id}/> */}
               <span className="username">{user.User_Name}</span>
               <br />
               < UserPfp id={user.id}/>
