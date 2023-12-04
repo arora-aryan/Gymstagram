@@ -76,8 +76,10 @@ function EditProfilePage() {
     }
   };
 
-  const handleProfileClick = async () => {
-    await handleSaveProfile(); // await makes sure that handleSaveProfile completes before navigate, think threading, thread.join() or return statement if then pass
+  const handleProfileClick = async (e) => {
+    if (e !=="default"){
+      await handleSaveProfile(); // await makes sure that handleSaveProfile completes before navigate, think threading, thread.join() or return statement if then pass
+    }
     navigate("/profile-page");
   };
 
@@ -105,7 +107,7 @@ function EditProfilePage() {
             value={location}
             onChange={handleLocationChange}
             className="location-style"
-            placeholder="Enter your location"
+            placeholder="Location"
           />
         </div>
         <div className="input-group">
@@ -124,6 +126,7 @@ function EditProfilePage() {
           <button onClick={handleProfileClick} className="fancy-button">
             View Profile
           </button>
+          <button onClick={() => handleProfileClick("default")} className="fancy-button">Cancel Text Edits</button>
         </div>
         {profileSaved && <p>Profile updated successfully!</p>}
       </form>

@@ -1,7 +1,22 @@
-ul {
-    list-style-type: none; /* Removes bullet points */
-    padding-left: 0; /* Removes default padding */
-    margin: 0 auto; /* Removes default margin and centers the list */
-    display: flex; /* Optional: Use if you want a flexbox layout */
-    flex-direction: column; /* Optional: Stacks items vertically */
-  }
+.location-style {
+  width: 50%; /* Adjust the width as needed */
+  margin: 0 auto; /* Center the element horizontally */
+  padding: 10px;
+  border: 5px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  min-height: 14px;
+  font-size: 12px;
+  color: #007BFF;
+  font-weight: bold;
+
+  /* Center text vertically */
+  display: flex;
+  align-items: center;
+}
+
+.location-style:hover,
+.location-style:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

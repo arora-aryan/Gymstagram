@@ -137,7 +137,7 @@ export const ProfilePic = () => {
       {selectedFile && (
         <>
           <button onClick={handleCancel} className="fancy-button">
-            Cancel
+            Cancel Image
           </button>
           <button onClick={handleUpload} className="fancy-button">
             Upload
