@@ -13,6 +13,8 @@ function HomePage() {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [users, setUsers] = useState([]); // State for users
+  const [currentUserId, setCurrentUserId] = useState(''); // State to store the current user's UID
+
   const navigate = useNavigate();
     
   useEffect(() => {
@@ -32,22 +34,21 @@ function HomePage() {
     return () => unsubscribe(); // Clean up the subscription
   }, []);
 
-  
   const [searchResults, setSearchResults] = useState(''); // State for search query
 
-  // Function to filter users based on search query
   const filteredUsers = users.filter(user => {
-    // Ensure that the properties exist before trying to access them
     const userName = user.User_Name ? user.User_Name.toLowerCase() : '';
     const bio = user.bio ? user.bio.toLowerCase() : '';
-  
-    return userName.includes(searchResults.toLowerCase()) ||
-           bio.includes(searchResults.toLowerCase());
-    // Add more fields to filter as needed
+
+    // Exclude the current user based on UID and apply search filter
+    return user.id !== currentUserId &&
+           (userName.includes(searchResults.toLowerCase()) ||
+           bio.includes(searchResults.toLowerCase()));
   });
   
 
   const fetchProfile = async (uid) => {
+    setCurrentUserId(uid); // Store the current user's UID
     const docRef = doc(firestore, "profiles", uid);
     const docSnap = await getDoc(docRef);
 
@@ -59,16 +60,19 @@ function HomePage() {
     }
   };
 
-  // Fetch users from Firestore
   const fetchUsers = async () => {
     try {
-      const usersColRef = collection(firestore, "profiles"); // Adjust the collection path as needed
+      const usersColRef = collection(firestore, "profiles");
       const usersSnapshot = await getDocs(usersColRef);
-      const usersList = usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      console.log("Fetched Users:", usersList); // Debug: Log fetched users
+  
+      const usersList = usersSnapshot.docs
+        .map(doc => ({ id: doc.id, ...doc.data() }))
+        .filter(user => user.id !== currentUserId); // Exclude the current user
+  
+      console.log("Fetched Users:", usersList);
       setUsers(usersList);
     } catch (error) {
-      console.error("Error fetching users:", error); // Log any errors
+      console.error("Error fetching users:", error);
     }
   };
   

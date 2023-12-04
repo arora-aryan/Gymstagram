@@ -65,7 +65,7 @@ function CreateAccountPage() {
             type="text"
             id="username"
             name="username"
-            placeholder="Username"
+            placeholder="Full Name"
             className="fancy-input"
             value={formData.username}
             onChange={(e) => setFormData({ ...formData, username: e.target.value })}
