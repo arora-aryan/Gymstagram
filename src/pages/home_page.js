@@ -142,11 +142,10 @@ function HomePage() {
             <br />
             <span className="bio">{user.bio}</span>
             <br />
-            {user.profile_picture} 
+            {user.profile_picture} |
             <button onClick={() => handleMatchClick([user.id])}>
-            Like
+              Like
             </button>
-          )}
           </li>
         ))}
 
