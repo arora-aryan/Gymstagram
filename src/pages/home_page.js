@@ -7,6 +7,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import './home_page.css';
 import '../App.css';
 import './create_post.js';
+import Logo from "../logo.jpeg";
 
 
 function HomePage() {
@@ -108,6 +109,15 @@ function HomePage() {
   
  return (
     <div>
+      <img
+        id="myImageElement"
+        src={Logo}
+        alt="Logo"
+        width="100"
+        height="100"
+        style={{ borderRadius: "50%" }} // Apply the circular shape
+      />
+      <h1>Gymstant</h1>
       <br/>
       <button className="fancy-button" onClick={handleProfileClick}>
         View Profile
@@ -126,25 +136,25 @@ function HomePage() {
         onChange={(e) => setSearchResults(e.target.value)}
       />
       <ul style={{ listStyleType: 'none', textAlign: "center" }}>
-        {filteredUsers.map((user) => (
-          <li key={user.id} className="user-box">
-            {user.profile_picture} | {user.User_Name} | {user.bio}
-            {/* <br></br>
-            <button onClick={() => handleMatchClick([user.id])}>
-              Like
-            </button> */}
-            <br></br>
-            {isMutualLike(user.id) ? (
+      {filteredUsers.map((user) => (
+        <li key={user.id} className="user-box">
+          {user.profile_picture}
+          <span className="username">{user.User_Name}</span>
+          <br />
+          <span className="bio">{user.bio}</span>
+          <br />
+          {isMutualLike(user.id) ? (
             <button className="matched-button">
-            Matched
+              Matched
             </button>
           ) : (
             <button onClick={() => handleMatchClick([user.id])}>
-            Like
+              Like
             </button>
           )}
-          </li>
-        ))}
+        </li>
+      ))}
+
 
         {filteredUsers.length === 0 && searchResults && (
           <div className="no-users-found">
