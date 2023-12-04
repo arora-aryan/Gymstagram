@@ -4,6 +4,8 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { firestore } from '../firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
+import "../App.css";
+import Logo from "../logo.jpeg";
 
 function CreateAccountPage() {
   const [formData, setFormData] = useState({
@@ -37,7 +39,7 @@ function CreateAccountPage() {
       });
 
       //navigate if sucessful
-      navigate('/login')
+      navigate('/edit-profile')
 
       // User registration successful, you can add additional logic here if needed
     } catch (error) {
@@ -46,47 +48,53 @@ function CreateAccountPage() {
     }
   };
 
-
-
   return (
     <div className="App-header">
-      <div>
-        <h1>Create a New Account</h1>
-      </div>
-      <div className="container">
-        <form onSubmit={handleFormSubmit}>
-          <label htmlFor="username">Username:</label>
+      <img
+        id="myImageElement"
+        src={Logo}
+        alt="Logo"
+        width="100"
+        height="100"
+        style={{ borderRadius: "50%" }} // Apply the circular shape
+      />
+      <div className="form-center">
+        <h1 className="fancy-header">Create a New Account</h1>
+        <form onSubmit={handleFormSubmit} className="form-center">
           <input
             type="text"
             id="username"
             name="username"
-            className="input-field"
+            placeholder="Username"
+            className="fancy-input"
             value={formData.username}
             onChange={(e) => setFormData({ ...formData, username: e.target.value })}
           />
-          <br />
-          <label htmlFor="email">Email:</label>
+          <div className="spacer"></div>
+
           <input
             type="email"
             id="email"
             name="email"
-            className="input-field"
+            placeholder="Email"
+            className="fancy-input"
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
           />
-          <br />
-          <label htmlFor="password">Password:</label>
+          <div className="spacer"></div>
+
           <input
             type="password"
             id="password"
             name="password"
-            className="input-field"
+            placeholder="Password"
+            className="fancy-input"
             value={formData.password}
             onChange={(e) => setFormData({ ...formData, password: e.target.value })}
           />
+          <div className="spacer"></div>
 
-          {/* Add more form fields as needed */}
-          <button type="submit" className="submit-button">
+          <button type="submit" className="fancy-button">
             Create Account
           </button>
         </form>

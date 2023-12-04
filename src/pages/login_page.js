@@ -15,17 +15,8 @@ function LoginPage() {
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate(); // Initialize the navigate function
 
-  //   const handleLogin = async (e) => {
-  //     e.preventDefault()
-  //     const auth = getAuth()
-  //     try{
-  //         await signInWithEmailAndPassword(auth, username, password);
-  //         navigate('/homepage');
-  //     }
-  //     catch (error){
-  //         setErrorMessage("Login not recognized. Please try again.")
-  //     }
-  // }
+
+
   const handleLogin = async (e) => {
     e.preventDefault();
     const auth = getAuth();
@@ -97,7 +88,7 @@ function LoginPage() {
         <br />
         <button
           type="submit"
-          className="submit-button"
+          className="fancy-button"
           onClick={handleCreateAccount}
         >
           Create Account
