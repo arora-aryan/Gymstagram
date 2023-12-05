@@ -1,91 +1,93 @@
-<<<<<<< HEAD
-# Gymstagram
-Gymstagram - where users can share workout schedules, meal plans, and progress pictures to enhance their fitness journey and build a community around health and fitness. 
-=======
-# Getting Started with Create React App
+# Gymstant - Find Your Gym Buddy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Gymstant is a React-based application that enables users to connect with potential gym partners. Whether you're looking for a workout companion or someone to share fitness tips with, Gymstant has you covered.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+To run the application locally, follow these steps:
 
-### `npm start`
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/your-username/gymstant.git
+   cd gymstant
+   ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Run the Application:**
+   ```bash
+   npm start
+   ```
 
-### `npm test`
+   This will start the development server, and you can view the app at [http://localhost:3000](http://localhost:3000).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Project Structure
 
-### `npm run build`
+The project has the following file structure:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+gymstant/
+|-- src/
+|   |-- components/
+|   |-- pages/
+|   |-- App.js
+|   |-- index.js
+|-- public/
+|-- package.json
+|-- README.md
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- `src/`: Contains the source code of the application.
+- `components/`: Holds reusable React components.
+- `pages/`: Defines different pages of the application.
+- `public/`: Public assets and the HTML template.
+- `App.js`: Main component that renders other components.
+- `index.js`: Entry point of the application.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Available Routes
 
-### `npm run eject`
+- `/login`: Login page for users.
+- `/homepage`: Main homepage displaying potential gym buddies.
+- `/profile-page`: User profile page.
+- `/edit-profile`: Page for editing user profile information.
+- `/create`: Page for creating posts or events.
+- `/create-account`: Account creation page.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Deployment to Firebase
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To deploy the Gymstant app to Firebase, make sure you have the Firebase CLI installed:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm install -g firebase-tools
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Then, follow these steps:
 
-## Learn More
+1. **Build the App:**
+   ```bash
+   npm run build
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. **Login to Firebase:**
+   ```bash
+   firebase login
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. **Initialize Firebase Project:**
+   ```bash
+   firebase init
+   ```
 
-### Code Splitting
+   Select hosting as the feature to set up, and follow the prompts.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4. **Deploy to Firebase:**
+   ```bash
+   firebase deploy
+   ```
 
-### Analyzing the Bundle Size
+   Your Gymstant app is now live on Firebase! You can access it at the provided hosting URL.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> 1d6bddf (Initialize project using Create React App)
-
-
-
-npm install firebase
-npm install react-router-dom
-
-
-
-TO ACTUALLY HOST THIS PROJ WE
-
-firebase login --make sure that you log in to a user that has access
-firebase init --Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub
-Action deploys
-**make sure to select your CORRECT project name, or type in the project ID found in firebase*** SELECT BUILD as your folder *build*
-then
-`npm run build;firebase deploy`
+Feel free to explore and customize the app further according to your needs. Happy coding and happy workouts!
