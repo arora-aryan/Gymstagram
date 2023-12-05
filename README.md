@@ -8,8 +8,8 @@ To run the application locally, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/gymstant.git
-   cd gymstant
+   git clone https://github.com/arora-aryan/Gymstagram/edit/main/README.md
+   cd Gymstagram
    ```
 
 2. **Install Dependencies:**
@@ -29,23 +29,24 @@ To run the application locally, follow these steps:
 The project has the following file structure:
 
 ```
-gymstant/
+Gymstagram/
 |-- src/
-|   |-- components/
-|   |-- pages/
+|   |-- components/*
+|   |-- pages/*
 |   |-- App.js
 |   |-- index.js
 |-- public/
 |-- package.json
+|-- package-lock.json
 |-- README.md
 ```
 
 - `src/`: Contains the source code of the application.
 - `components/`: Holds reusable React components.
-- `pages/`: Defines different pages of the application.
-- `public/`: Public assets and the HTML template.
-- `App.js`: Main component that renders other components.
-- `index.js`: Entry point of the application.
+- `pages/`: Defines different pages of the application, for the specifications described as well to make a basic CRUD (Create Read Upload Delete) Application
+- `public/`: Public assets.
+- `App.js`: Main component that renders other components, namely pages.
+- `index.js`: Entry point of the application, what gets called on load initially.
 
 ## Available Routes
 
@@ -53,7 +54,7 @@ gymstant/
 - `/homepage`: Main homepage displaying potential gym buddies.
 - `/profile-page`: User profile page.
 - `/edit-profile`: Page for editing user profile information.
-- `/create`: Page for creating posts or events.
+- `/create`: Page for creating pure image posts.
 - `/create-account`: Account creation page.
 
 ## Deployment to Firebase
@@ -80,14 +81,15 @@ Then, follow these steps:
    ```bash
    firebase init
    ```
-
+   --make sure to select build, not public, when prompted ***What do you want to use as your public directory?***
    Select hosting as the feature to set up, and follow the prompts.
 
 4. **Deploy to Firebase:**
    ```bash
+   npm run build
    firebase deploy
    ```
 
-   Your Gymstant app is now live on Firebase! You can access it at the provided hosting URL.
+   Gymstant (or your app) should be now live on Firebase! You can access it at the provided hosting URL after the last command aforementioned.
 
-Feel free to explore and customize the app further according to your needs. Happy coding and happy workouts!
+Happy coding and happy workouts!
