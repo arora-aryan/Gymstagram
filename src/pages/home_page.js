@@ -169,7 +169,9 @@ function HomePage() {
               <br />
               < UserPfp id={user.id}/>
               <ProfilePost imageOnly={true} id={user.id} />
-              <span className="bio">{user.bio}</span>
+              <span className="bio">{"Bio: " + user.bio}</span>
+              <br />
+              <span className="bio">{"Location: " + user.location}</span>
               <br />
               {isMutualLike(user.id) ? (
                 <>
