@@ -78,3 +78,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 npm install firebase
 npm install react-router-dom
+
+
+
+TO ACTUALLY HOST THIS PROJ WE
+
+firebase login --make sure that you log in to a user that has access
+firebase init --Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub
+Action deploys
+**make sure to select your CORRECT project name, or type in the project ID found in firebase*** SELECT BUILD as your folder *build*
+then
+`npm run build;firebase deploy`
