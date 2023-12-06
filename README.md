@@ -17,12 +17,12 @@ To run the application locally, follow these steps:
    npm install
    ```
 
-3. **Run the Application (http://localhost:3000/):**
+3. **Run the Application:**
    ```bash
    npm start
    ```
 
-   This will start the development server, and you can view the app at [http://localhost:3000](http://localhost:3000).
+   This will start the development server; view the app at [http://localhost:3000](http://localhost:3000).
 
 ## Project Structure
 
