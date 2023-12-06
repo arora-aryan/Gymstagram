@@ -7,14 +7,14 @@ Gymstant is a React-based application that enables users to connect with potenti
 To run the application locally, follow these steps:
 
 ```bash
-# Step 1: Clone the Repository
+# Step 1: Clone Repository
 git clone https://github.com/arora-aryan/Gymstagram;
 cd Gymstagram;
 
 # Step 2: Install Dependencies
 npm install;
 
-# Step 3: Run the Application
+# Step 3: Run Application
 npm start;
 ```
 
