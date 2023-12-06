@@ -35,7 +35,9 @@ Gymstagram/
 |   |-- pages/*
 |   |-- App.js
 |   |-- index.js
-|-- public/
+|   |-- firebase.js
+|   |-- [Other files (logo, setup, etc)]
+|-- public/*
 |-- package.json
 |-- package-lock.json
 |-- README.md
@@ -47,6 +49,7 @@ Gymstagram/
 - `public/`: Public assets.
 - `App.js`: Main component that renders other components, namely pages.
 - `index.js`: Entry point of the application, what gets called on load initially.
+- `firebase.js`: Exports Cloud Firestore app, authorization, firestore database, and image storage.
 
 ## Available Routes
 
