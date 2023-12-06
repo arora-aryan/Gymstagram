@@ -8,7 +8,7 @@ To run the application locally, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/arora-aryan/Gymstagram/edit/main/README.md
+   git clone https://github.com/arora-aryan/Gymstagram/edit/main/README.md;
    cd Gymstagram
    ```
 
@@ -17,7 +17,7 @@ To run the application locally, follow these steps:
    npm install
    ```
 
-3. **Run the Application:**
+3. **Run the Application (http://localhost:3000/):**
    ```bash
    npm start
    ```
@@ -86,7 +86,7 @@ Then, follow these steps:
 
 4. **Deploy to Firebase:**
    ```bash
-   npm run build
+   npm run build;
    firebase deploy
    ```
 
