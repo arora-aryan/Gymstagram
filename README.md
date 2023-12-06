@@ -24,7 +24,7 @@ This will start the development server; view the app at [http://localhost:3000](
 
 The project has the following file structure:
 
-`
+```
 Gymstagram/
 |-- src/
 |   |-- components/*
@@ -37,7 +37,7 @@ Gymstagram/
 |-- package.json
 |-- package-lock.json
 |-- README.md
-`
+```
 
 - `src/`: Contains the source code of the application.
 - `components/`: Holds reusable React components.
