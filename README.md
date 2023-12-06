@@ -8,7 +8,7 @@ To run the application locally, follow these steps:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/arora-aryan/Gymstagram/edit/main/README.md;
+   git clone https://github.com/arora-aryan/Gymstagram;
    cd Gymstagram
    ```
 
