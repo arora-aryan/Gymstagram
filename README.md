@@ -81,8 +81,10 @@ Then, follow these steps:
    ```bash
    firebase init
    ```
-   --make sure to *select* **build**, not ~public~, when prompted ***What do you want to use as your public directory?***
-   Select hosting as the feature to set up, and follow the prompts.
+   Select hosting prompt as: `Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub
+Action deploys`
+   Maake sure to *select* **build**, not ~public~, when prompted ***`What do you want to use as your public directory?`***
+   
 
 4. **Deploy to Firebase:**
    ```bash
