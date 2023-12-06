@@ -83,15 +83,16 @@ Then, follow these steps:
    ```
    Select hosting prompt as: `Hosting: Configure files for Firebase Hosting and (optionally) set up GitHub
 Action deploys`
-   Maake sure to *select* **build**, not ~public~, when prompted ***`What do you want to use as your public directory?`***
+   Make sure to *select* **build**, not ~public~, when prompted ***`What do you want to use as your public directory?`***
+   Enter (default option) for all other options.
    
 
-4. **Deploy to Firebase:**
+5. **Deploy to Firebase:**
    ```bash
    npm run build;
    firebase deploy
    ```
 
-   Gymstant (or your app) should be now live on Firebase! You can access it at the provided hosting URL after the last command aforementioned.
+   Gymstant (or your app) should be now live on Firebase! You can access it at the provided hosting URL after executing 'firebase deploy'.
 
 Happy coding and happy workouts!
