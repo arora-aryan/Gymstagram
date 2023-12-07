@@ -77,7 +77,7 @@ function EditProfilePage() {
   };
 
   const handleProfileClick = async (e) => {
-    if (e !=="default"){
+    if (e !== "default") {
       await handleSaveProfile(); // await makes sure that handleSaveProfile completes before navigate, think threading, thread.join() or return statement if then pass
     }
     navigate("/profile-page");
@@ -126,7 +126,12 @@ function EditProfilePage() {
           <button onClick={handleProfileClick} className="fancy-button">
             View Profile
           </button>
-          <button onClick={() => handleProfileClick("default")} className="fancy-button">Cancel Text Edits</button>
+          <button
+            onClick={() => handleProfileClick("default")}
+            className="fancy-button"
+          >
+            Cancel Text Edits
+          </button>
         </div>
         {profileSaved && <p>Profile updated successfully!</p>}
       </form>

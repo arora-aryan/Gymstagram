@@ -9,11 +9,13 @@ import {
   deleteObject,
 } from "firebase/storage";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { faL } from "@fortawesome/free-solid-svg-icons";
 
 export const ProfilePic = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [previousImageUrl, setPreviousImageUrl] = useState(null);
+  const [uploadedPFP, setuploadedPFP] = useState(false);
 
   useEffect(() => {
     const auth = getAuth();
@@ -110,11 +112,13 @@ export const ProfilePic = () => {
       fetchProfilePicture(user.uid);
 
       setSelectedFile(null);
+      setuploadedPFP(true);
       console.log("File uploaded successfully");
   
       // You can save the downloadURL to your user profile in Firebase Firestore or Realtime Database
       // Example: updateProfilePicture(downloadURL);
     } catch (error) {
+      setuploadedPFP(false);
       console.error("Error uploading file:", error);
     }
   };
@@ -128,17 +132,18 @@ export const ProfilePic = () => {
         </div>
       </div>
       <input
-        className="fancy-button"
+        className={uploadedPFP ? "upload-button-after" : "upload-button-before"}
         type="file"
         accept="image/*"
         onChange={handleFileChange}
       />
+      <br />
       {selectedFile && (
         <>
           <button onClick={handleCancel} className="fancy-button">
             Cancel Image
           </button>
-          <button onClick={handleUpload} className="fancy-button">
+          <button onClick={handleUpload} className="fancy-button" style={{backgroundColor: "#229757"}}>
             Upload
           </button>
         </>

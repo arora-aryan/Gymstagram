@@ -20,3 +20,29 @@
   border-color: #007BFF;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+
+.upload-button-before{
+  padding: 10px 20px;
+  margin-bottom: 1vh;
+  font-size: 16px;
+  background-color: #4a90e2; 
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; 
+}
+
+.upload-button-after{
+  padding: 10px 20px;
+  margin-bottom: 1vh;
+  font-size: 16px;
+  background-color: #229757; 
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; 
+}

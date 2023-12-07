@@ -5,6 +5,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./home_page.css";
 import "../App.css";
+import "./profile_page.css";
 import "./create_post.js";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { ref, getDownloadURL } from "firebase/storage";
