@@ -13,7 +13,6 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import "./home_page.css";
 import "../App.css";
 import "./create_post.js";
-import Logo from "../logo.jpeg";
 import { UserPfp } from "../components/userpfp.js";
 import { ProfilePost } from "../components/postimage.js";
 
@@ -124,21 +123,19 @@ function HomePage() {
     navigate("/profile-page");
   };
 
+  const handleGlobalFeedClick = () => {
+    navigate("/global-feed");
+  };
+
   return (
     <div>
-      <img
-        id="myImageElement"
-        src={Logo}
-        className="img-spin"
-        alt="Logo"
-        width="100"
-        height="100"
-        style={{ borderRadius: "50%" }} // Apply the circular shape
-      />
       <h1>Gymstant</h1>
       <h1>Find Your Gym Buddy!</h1>
       <button className="fancy-button" onClick={handleProfileClick}>
         View Profile
+      </button>
+      <button className="fancy-button" onClick={handleGlobalFeedClick}>
+        Global Feed
       </button>
       <div>
         <button
@@ -160,14 +157,14 @@ function HomePage() {
           value={searchResults}
           onChange={(e) => setSearchResults(e.target.value)}
         />
-          <ul style={{ listStyleType: 'none', textAlign: "center" }}>
+        <ul style={{ listStyleType: "none", textAlign: "center" }}>
           {filteredUsers.map((user) => (
             <li key={user.id} className="user-box">
               {/* Restored the use of the <UserPfp> component for displaying profile pictures */}
               {/* <UserPfp id={user.id}/> */}
               <span className="username">{user.User_Name}</span>
               <br />
-              < UserPfp id={user.id}/>
+              <UserPfp id={user.id} />
               <ProfilePost imageOnly={true} id={user.id} />
               <span className="bio">{"Bio: " + user.bio}</span>
               <br />
@@ -175,9 +172,7 @@ function HomePage() {
               <br />
               {isMutualLike(user.id) ? (
                 <>
-                  <button className="matched-button">
-                    Matched
-                  </button>
+                  <button className="matched-button">Matched</button>
                   <p>Phone: {user.phoneNumber}</p> {/* Display phone number */}
                 </>
               ) : currentUserLikes.includes(user.id) ? (
@@ -185,19 +180,16 @@ function HomePage() {
                   Liked
                 </button>
               ) : (
-                <button onClick={() => handleMatchClick(user.id)}>
-                  Like
-                </button>
+                <button onClick={() => handleMatchClick(user.id)}>Like</button>
               )}
             </li>
           ))}
         </ul>
-
-          {filteredUsers.length === 0 && searchResults && (
-            <div className="no-users-found">No users found</div>
-          )}
+        {filteredUsers.length === 0 && searchResults && (
+          <div className="no-users-found">No users found</div>
+        )}
       </div>
-      </div>
+    </div>
   );
 }
 

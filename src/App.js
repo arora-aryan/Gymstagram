@@ -8,6 +8,7 @@ import CreatePost from './pages/create_post'
 import CreateAccountPage from './pages/create_account';
 import ProfilePage from './pages/profile_page'
 import EditProfilePage from './pages/edit_profile_page';
+import GlobalFeed from './pages/global_feed'
 
 //comment to understand how git rebase works
 
@@ -15,7 +16,6 @@ import './App.css';
 
 function App() {
   return (
-    //anotha one
     <Router>
       <div className="App">
         <Routes>
@@ -27,6 +27,7 @@ function App() {
           {/* <Route path="/edit-profile" element={<HomePage />} /> */}
           <Route path="/create" element={<CreatePost />} />
           <Route path="/create-account" element={<CreateAccountPage />} />
+          <Route path="/global-feed" element={<GlobalFeed />} />
         </Routes>
       </div>
     </Router>

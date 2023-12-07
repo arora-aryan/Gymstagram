@@ -9,7 +9,6 @@ import {
   deleteObject,
 } from "firebase/storage";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { v4 as uuidv4 } from "uuid";
 
 export const ProfilePic = () => {
   const [selectedFile, setSelectedFile] = useState(null);
