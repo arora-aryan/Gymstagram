@@ -1,12 +1,12 @@
 # Gymstant - Find Your Gym Buddy
 
-Gymstant is a React-based application that enables users to connect with potential gym partners. Whether you're looking for a workout companion or someone to share fitness tips with, Gymstant has you covered.
+Gymstant is a React-based application that enables users to connect with potential gym partners. Whether you're looking for a workout companion or someone to share fitness tips with, Gymstant has you covered. *Branch main serves as latest working branch*
 
 ## Getting Started
 *Make sure [Node js](https://nodejs.org/en) is installed before performing any steps. If you are unsure please type*
 ```bash
    npm -v
-   #Make sure that version is 10.2.4 or later.
+   #Make sure the version is 10.2.4 or later.
 ```
 To run the application locally, follow these steps:
 
@@ -96,6 +96,6 @@ Action deploys`
    firebase deploy
    ```
 
-   Gymstant (or your app) should be now live on Firebase! You can access it at the provided hosting URL after executing 'firebase deploy'.
+   Gymstant (or your app) should be now live on Firebase! You can access it at the provided hosting URL after executing 'firebase deploy'. The URL is based on your unique project id.
 
 Happy coding and happy workouts!
