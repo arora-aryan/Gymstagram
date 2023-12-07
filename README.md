@@ -4,6 +4,7 @@ Gymstant is a React-based application that enables users to connect with potenti
 
 ## Getting Started
 *Branch main serves as latest working branch*
+
 *Make sure [Node js](https://nodejs.org/en) is installed before performing any steps. If you are unsure please type*
 ```bash
    npm -v
