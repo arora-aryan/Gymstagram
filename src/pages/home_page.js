@@ -127,6 +127,10 @@ function HomePage() {
     navigate("/global-feed");
   };
 
+  const handleRefresh = () => {
+    window.location.reload();
+  }; 
+
   return (
     <div>
       <h1>Gymstant</h1>
@@ -136,6 +140,9 @@ function HomePage() {
       </button>
       <button className="fancy-button" onClick={handleGlobalFeedClick}>
         Global Feed
+      </button>
+      <button className="fancy-button" onClick={handleRefresh}>
+        Refresh &#8635;
       </button>
       <div>
         <button
