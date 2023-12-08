@@ -1,63 +1,74 @@
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    height: 200px;
-    margin-bottom: 20px;
-    margin-top: 20px;
-  }
-  
-  .top-right-button {
-    position: fixed;
-    font-size: large;
-    top: 15px;
-    left: 15px;
-  }
+.container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: 200px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
 
-  .top-left-button {
-    position: fixed;
-    font-size: large;
-    top: 15px;
-    right: 15px;
-  }
-  .user-box {
-    background-color: #f9f9f9;
-    padding: 20px;
-    margin: 20px 0;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .user-box:hover {
-    transform: scale(1.05);
-  }
-    /* home_page.css */
+.top-right-button {
+  position: fixed;
+  font-size: large;
+  top: 15px;
+  left: 15px;
+}
 
-  .no-users-found {
-    color: red;
-    text-align: center; /* Centers text horizontally */
-    display: flex;
-    justify-content: center; /* Centers content horizontally in a flex container */
-    align-items: center; /* Centers content vertically in a flex container */
-    height: 100px; 
-  }
+.top-left-button {
+  position: fixed;
+  font-size: large;
+  top: 15px;
+  right: 15px;
+}
 
-  ul {
-    list-style-type: none; /* Removes bullet points */
-    padding-left: 0; /* Removes default padding */
-    margin: 0 auto; /* Removes default margin and centers the list */
-    display: flex; /* Optional: Use if you want a flexbox layout */
-    flex-direction: column; /* Optional: Stacks items vertically */
-  }
+.user-box {
+  background-color: #ffffff;
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 300px;
+  transition: transform 0.7s cubic-bezier(0.25, 2, 0.25, 2), background-color 0.4s; /* Adjusted control points */
+}
 
-  /* home_page.css */
+.user-box:hover {
+  background-color: #00558060;
+  transform: scale(1.25);
+}
 
-/* Style for the "View Profile" button */
+
+/* .user-box:not(:hover) {
+  transition: transform 0.1s ease-in-out; /* Define a faster transition for non-hover state */
+
+
+.user-box:hover {
+  background-color: #00558060;
+  /* color: white; */
+  transform: scale(1.05);
+}
+
+.no-users-found {
+  color: red;
+  text-align: center; /* Centers text horizontally */
+  display: flex;
+  justify-content: center; /* Centers content horizontally in a flex container */
+  align-items: center; /* Centers content vertically in a flex container */
+  height: 100px;
+}
+
+ul {
+  list-style-type: none; /* Removes bullet points */
+  padding-left: 0; /* Removes default padding */
+  margin: 0 auto; /* Removes default margin and centers  list */
+  display: flex; /* Optional: Use if you want a flexbox layout */
+  flex-direction: column; /* Optional: Stacks items vertically */
+}
+
+/* home_page.css */
+
+/* Style for "View Profile" button */
 .fancy-button {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -69,9 +80,9 @@
   cursor: pointer;
 }
 
-/* Style for the "Create Post" button */
+/* Style for "Create Post" button */
 .fancy-post-button {
-  background-color: #008CBA;
+  background-color: #008cba;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -83,7 +94,7 @@
   cursor: pointer;
 }
 
-/* Style for the search bar */
+/* Style for search bar */
 .fancy-search-bar {
   padding: 8px;
   font-size: 16px;
@@ -91,18 +102,9 @@
   border-radius: 4px;
 }
 
-/* Style for the user boxes */
-/* .user-box {
-  background-color: #f9f9f9;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-} */
-
-/* Style for the "Like" button */
+/* Style for "Like" button */
 .user-box button {
-  background-color: #008CBA;
+  background-color: #008cba;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -113,39 +115,45 @@
   margin-top: 15px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s ease-in-out;
 }
 .user-box button:hover {
   background-color: #005580;
 }
 
-/* Style for the "No users found" message */
+/* Style for "No users found" message */
 .no-users-found {
   color: #555;
   font-style: italic;
   margin-top: 10px;
 }
 
-/* Style for the user boxes */
-.user-box {
-  background-color: #f9f9f9;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+/* Style for  user boxes */
+
+.user-box img {
+  max-width: 100%;
+  height: auto;
 }
 
-/* Style for the username */
+/* Style for  username */
 .user-box .username {
   font-size: 24px;
   font-weight: bold;
   color: #333;
 }
 
-/* Style for the bio */
+/* Style for  bio */
 .user-box .bio {
   margin-top: 10px;
   font-size: 16px;
-  color: #555;
+  color: #000000;
 }
 
+.user-boxed {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+  gap: 3vw;
+  max-width: 100vw;
+  padding: 2vw;
+}

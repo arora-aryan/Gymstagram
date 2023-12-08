@@ -150,6 +150,8 @@ function HomePage() {
       <button className="fancy-button" onClick={handleRefresh}>
         Refresh &#8635;
       </button>
+      <br />
+      <br />
       <div>
         <button
           className="fancy-post-button"
@@ -171,32 +173,35 @@ function HomePage() {
           onChange={(e) => setSearchResults(e.target.value)}
         />
         <ul style={{ listStyleType: "none", textAlign: "center" }}>
-          {filteredUsers.map((user) => (
-            <li key={user.id} className="user-box">
-              {/* Restored the use of the <UserPfp> component for displaying profile pictures */}
-              {/* <UserPfp id={user.id}/> */}
-              <span className="username">{user.User_Name}</span>
-              <br />
-              <UserPfp id={user.id} />
-              <ProfilePost imageOnly={true} id={user.id} />
-              <span className="bio">{"Bio: " + user.bio}</span>
-              <br />
-              <span className="bio">{"Location: " + user.location}</span>
-              <br />
-              {isMutualLike(user.id) ? (
-                <>
-                  <button className="matched-button">Matched</button>
-                  <p>Phone: {user.phoneNumber}</p> {/* Display phone number */}
-                </>
-              ) : currentUserLikes.includes(user.id) ? (
-                <button disabled className="liked-button">
-                  Liked
-                </button>
-              ) : (
-                <button onClick={() => handleMatchClick(user.id)}>Like</button>
-              )}
-            </li>
-          ))}
+          <div className="user-boxed">
+            {filteredUsers.map((user) => (
+              <li key={user.id} className="user-box">
+                <span className="username">{user.User_Name}</span>
+                <br />
+                <UserPfp id={user.id} />
+                <ProfilePost imageOnly={true} id={user.id} />
+                <span className="bio">{"Bio: " + user.bio}</span>
+                <br />
+                <span className="bio">{"Location: " + user.location}</span>
+                <br />
+                {isMutualLike(user.id) ? (
+                  <>
+                    <button className="matched-button">Matched</button>
+                    <p>Phone: {user.phoneNumber}</p>{" "}
+                    {/* Display phone number */}
+                  </>
+                ) : currentUserLikes.includes(user.id) ? (
+                  <button disabled className="liked-button">
+                    Liked
+                  </button>
+                ) : (
+                  <button onClick={() => handleMatchClick(user.id)}>
+                    Like
+                  </button>
+                )}
+              </li>
+            ))}
+          </div>
         </ul>
         {filteredUsers.length === 0 && searchResults && (
           <div className="no-users-found">No users found</div>
