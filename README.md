@@ -99,5 +99,6 @@ Action deploys`
    ```
 
    Gymstant (or your app) should be now live on Firebase! You can access it at the provided hosting URL after executing 'firebase deploy'. The URL is based on your unique project id.
+   firebase deploy [troubleshooting](https://www.freecodecamp.org/news/how-to-deploy-a-react-app-with-firebase/) and more complex steps
 
 Happy coding and happy workouts!
