@@ -127,9 +127,15 @@ function HomePage() {
     navigate("/global-feed");
   };
 
-  const handleRefresh = () => {
-    window.location.reload();
-  }; 
+  const handleRefresh = async () => {
+    try {
+      // Fetch users again
+      await fetchUsers();
+      console.log("Users refreshed!");
+    } catch (error) {
+      console.error("Error refreshing users:", error);
+    }
+  };
 
   return (
     <div>
