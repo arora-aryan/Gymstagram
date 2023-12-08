@@ -28,7 +28,9 @@
   border: 1px solid #ddd;
   border-radius: 10px;
   width: 300px;
-  transition: transform 0.7s cubic-bezier(0.25, 2, 0.25, 2), background-color 0.4s; /* Adjusted control points */
+  transition: transform 0.7s cubic-bezier(0.25, 2, 0.25, 2),
+    background-color 0.4s; /* Adjusted control points */
+  align-self: flex-start;
 }
 
 .user-box:hover {
@@ -36,10 +38,8 @@
   transform: scale(1.25);
 }
 
-
 /* .user-box:not(:hover) {
   transition: transform 0.1s ease-in-out; /* Define a faster transition for non-hover state */
-
 
 .user-box:hover {
   background-color: #00558060;

@@ -10,7 +10,7 @@ import {
 import { auth, googleProvider } from "../firebase";
 import { ImageFeed } from "../components/feed";
 import { firestore } from "../firebase";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import {
   doc,
   collection,
@@ -101,12 +101,14 @@ function GlobalFeed() {
         <button class="fancy-button">Home Page</button>
       </Link>
       <ul style={{ listStyleType: "none", textAlign: "center" }}>
-        {filteredUsers.map((user) => (
-          <li key={user.id} className="user-box">
-            <span className="username">{user.User_Name}'s Posts</span>
-            <ImageFeed id={user.id} />
-          </li>
-        ))}
+        <div className="user-boxed">
+          {filteredUsers.map((user) => (
+            <li key={user.id} className="user-box">
+              <span className="username">{user.User_Name}'s Posts</span>
+              <ImageFeed id={user.id} />
+            </li>
+          ))}
+        </div>
       </ul>
     </div>
   );
